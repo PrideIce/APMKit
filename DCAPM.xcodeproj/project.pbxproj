@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BEB19556C542E1F0BB104E0 /* libPods-DCAPM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACDCBC08216F65A9B36DE073 /* libPods-DCAPM.a */; };
 		F89110732392601100A94A7C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F89110722392601100A94A7C /* AppDelegate.m */; };
 		F89110762392601100A94A7C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F89110752392601100A94A7C /* SceneDelegate.m */; };
 		F89110792392601100A94A7C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F89110782392601100A94A7C /* ViewController.m */; };
@@ -19,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		949033A8D1B92FA22611E85D /* Pods-DCAPM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCAPM.release.xcconfig"; path = "Target Support Files/Pods-DCAPM/Pods-DCAPM.release.xcconfig"; sourceTree = "<group>"; };
+		ACDCBC08216F65A9B36DE073 /* libPods-DCAPM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DCAPM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B79B792080D6356315CFED69 /* Pods-DCAPM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCAPM.debug.xcconfig"; path = "Target Support Files/Pods-DCAPM/Pods-DCAPM.debug.xcconfig"; sourceTree = "<group>"; };
 		F891106E2392601100A94A7C /* DCAPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCAPM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F89110712392601100A94A7C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F89110722392601100A94A7C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -42,17 +46,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BEB19556C542E1F0BB104E0 /* libPods-DCAPM.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		792B7C3C332374DEFAA15509 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ACDCBC08216F65A9B36DE073 /* libPods-DCAPM.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F7D14CC7A9ADA396692572BE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B79B792080D6356315CFED69 /* Pods-DCAPM.debug.xcconfig */,
+				949033A8D1B92FA22611E85D /* Pods-DCAPM.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F89110652392601100A94A7C = {
 			isa = PBXGroup;
 			children = (
 				F89110702392601100A94A7C /* DCAPM */,
 				F891106F2392601100A94A7C /* Products */,
+				F7D14CC7A9ADA396692572BE /* Pods */,
+				792B7C3C332374DEFAA15509 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +134,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F89110872392601300A94A7C /* Build configuration list for PBXNativeTarget "DCAPM" */;
 			buildPhases = (
+				2912E1060114E4D620200F1A /* [CP] Check Pods Manifest.lock */,
 				F891106A2392601100A94A7C /* Sources */,
 				F891106B2392601100A94A7C /* Frameworks */,
 				F891106C2392601100A94A7C /* Resources */,
@@ -166,6 +192,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2912E1060114E4D620200F1A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DCAPM-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F891106A2392601100A94A7C /* Sources */ = {
@@ -315,6 +366,7 @@
 		};
 		F89110882392601300A94A7C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B79B792080D6356315CFED69 /* Pods-DCAPM.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -332,6 +384,7 @@
 		};
 		F89110892392601300A94A7C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 949033A8D1B92FA22611E85D /* Pods-DCAPM.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -24,9 +24,10 @@ extern NSString *APMCrashRecord;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"崩溃报告";
+    
     self.dataArray = @[];
     [self.view addSubview:self.tableView];
-    
     [self initData];
 }
 

@@ -18,12 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"监控系统";
 }
 
 - (IBAction)crashAction:(id)sender
 {
     CrashListVC *vc = [[CrashListVC alloc] init];
-    [self presentViewController:vc animated:YES completion:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
