@@ -3,6 +3,6 @@ inhibit_all_warnings!
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'DCAPM' do
-   pod 'Mantle'
+   pod 'Masonry'
    pod 'WCDB'
 end

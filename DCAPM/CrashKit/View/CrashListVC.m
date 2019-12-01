@@ -8,6 +8,7 @@
 
 #import "CrashListVC.h"
 #import "CrashKit.h"
+#import "CrashDetailVC.h"
 
 extern NSString *APMCrashRecord;
 
@@ -20,7 +21,8 @@ extern NSString *APMCrashRecord;
 
 @implementation CrashListVC
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -76,5 +78,11 @@ extern NSString *APMCrashRecord;
 
 #pragma mark - UITableViewDelegate
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CrashDetailVC *vc = [[CrashDetailVC alloc] init];
+    vc.data = [self.dataArray objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end

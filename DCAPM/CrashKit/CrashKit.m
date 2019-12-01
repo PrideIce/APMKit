@@ -7,25 +7,25 @@
 //
 
 #import "CrashKit.h"
-//#define APMCrashRecord @"APMCrashRecord"
-const NSString *APMCrashRecord = @"APMCrashRecord";
+
+NSString *APMCrashRecord = @"APMCrashRecord";
 
 NSString *applicationDocumentsDirectory() {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
 }
 
 void UncaughtExceptionHandler(NSException *exception) {
-    NSArray *arr = [exception callStackSymbols];
-    NSString *symbols = [arr componentsJoinedByString:@"\n"];
     NSString *reason = [exception reason];
     NSString *name = [exception name];
-    NSString *time = [NSString stringWithFormat:@"%@", [NSDate date]];
-
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
+    NSString *time= [formatter stringFromDate:[NSDate date]];
+    NSArray *arr = [exception callStackSymbols];
+    NSString *symbols = [arr componentsJoinedByString:@"\n"];
     NSString *expStack = [NSString stringWithFormat:@"=============Crash Report=============\nTime: %@\nName: %@\nReason: %@\nCallStackSymbols:\n%@\n\n\n",time,name,reason,symbols];
     
-    NSString *filePath = [applicationDocumentsDirectory() stringByAppendingPathComponent:@"Exception.txt"];
-    NSLog(@"APM CrashKit FilePath: %@", filePath);
-    
+//    NSString *filePath = [applicationDocumentsDirectory() stringByAppendingPathComponent:@"Exception.txt"];
+//    NSLog(@"APM CrashKit FilePath: %@", filePath);
 //    NSFileManager *fileManager = [NSFileManager defaultManager];
 //    if (![fileManager fileExistsAtPath:filePath])
 //    {
@@ -46,10 +46,9 @@ void UncaughtExceptionHandler(NSException *exception) {
     NSDictionary *expDict = @{@"name":name,
                               @"reason":reason,
                               @"time":time,
-                              @"symbols":symbols};
+                              @"stack":expStack};
     [records addObject:expDict];
     [userDefault setObject:records forKey:APMCrashRecord];
-//    [expStack writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
 @implementation CrashKit

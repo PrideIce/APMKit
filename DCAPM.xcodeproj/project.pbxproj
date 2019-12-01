@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4BEB19556C542E1F0BB104E0 /* libPods-DCAPM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACDCBC08216F65A9B36DE073 /* libPods-DCAPM.a */; };
+		F858F3F12393911300057DB4 /* CrashDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F858F3F02393911300057DB4 /* CrashDetailVC.m */; };
 		F89110732392601100A94A7C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F89110722392601100A94A7C /* AppDelegate.m */; };
 		F89110762392601100A94A7C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F89110752392601100A94A7C /* SceneDelegate.m */; };
 		F89110792392601100A94A7C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F89110782392601100A94A7C /* ViewController.m */; };
@@ -23,6 +24,8 @@
 		949033A8D1B92FA22611E85D /* Pods-DCAPM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCAPM.release.xcconfig"; path = "Target Support Files/Pods-DCAPM/Pods-DCAPM.release.xcconfig"; sourceTree = "<group>"; };
 		ACDCBC08216F65A9B36DE073 /* libPods-DCAPM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DCAPM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B79B792080D6356315CFED69 /* Pods-DCAPM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCAPM.debug.xcconfig"; path = "Target Support Files/Pods-DCAPM/Pods-DCAPM.debug.xcconfig"; sourceTree = "<group>"; };
+		F858F3EF2393911300057DB4 /* CrashDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrashDetailVC.h; sourceTree = "<group>"; };
+		F858F3F02393911300057DB4 /* CrashDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrashDetailVC.m; sourceTree = "<group>"; };
 		F891106E2392601100A94A7C /* DCAPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCAPM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F89110712392601100A94A7C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F89110722392601100A94A7C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -67,7 +70,6 @@
 				B79B792080D6356315CFED69 /* Pods-DCAPM.debug.xcconfig */,
 				949033A8D1B92FA22611E85D /* Pods-DCAPM.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -123,6 +125,8 @@
 			children = (
 				F891108F23926B3E00A94A7C /* CrashListVC.h */,
 				F891109023926B3E00A94A7C /* CrashListVC.m */,
+				F858F3EF2393911300057DB4 /* CrashDetailVC.h */,
+				F858F3F02393911300057DB4 /* CrashDetailVC.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -225,6 +229,7 @@
 			files = (
 				F891109123926B3E00A94A7C /* CrashListVC.m in Sources */,
 				F891108C2392645600A94A7C /* CrashKit.m in Sources */,
+				F858F3F12393911300057DB4 /* CrashDetailVC.m in Sources */,
 				F89110792392601100A94A7C /* ViewController.m in Sources */,
 				F89110732392601100A94A7C /* AppDelegate.m in Sources */,
 				F89110842392601300A94A7C /* main.m in Sources */,
