@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CrashKit : NSObject
 
-+ (NSString *)getLogFilePath;
-
 + (NSUncaughtExceptionHandler *)getHandler;
+
++ (void)enterCrashReport;
 
 @end
 

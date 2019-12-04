@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "APMKit.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [APMKit initAPM];
+    
     NSArray *array = [NSArray arrayWithObject:@"there is only one objective in this arary,call index one, app will crash and throw an exception!"];
 //    NSLog(@"%@", [array objectAtIndex:1]);
     

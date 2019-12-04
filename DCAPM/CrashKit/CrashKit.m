@@ -7,6 +7,7 @@
 //
 
 #import "CrashKit.h"
+#import "CrashListVC.h"
 
 NSString *APMCrashRecord = @"APMCrashRecord";
 
@@ -18,25 +19,11 @@ void UncaughtExceptionHandler(NSException *exception) {
     NSString *reason = [exception reason];
     NSString *name = [exception name];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *time= [formatter stringFromDate:[NSDate date]];
     NSArray *arr = [exception callStackSymbols];
-    NSString *symbols = [arr componentsJoinedByString:@"\n"];
-    NSString *expStack = [NSString stringWithFormat:@"=============Crash Report=============\nTime: %@\nName: %@\nReason: %@\nCallStackSymbols:\n%@\n\n\n",time,name,reason,symbols];
-    
-//    NSString *filePath = [applicationDocumentsDirectory() stringByAppendingPathComponent:@"Exception.txt"];
-//    NSLog(@"APM CrashKit FilePath: %@", filePath);
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    if (![fileManager fileExistsAtPath:filePath])
-//    {
-//        [fileManager createFileAtPath:filePath contents:nil attributes:nil];
-//    }
-//
-//    NSFileHandle *fileHandle = [NSFileHandle fileHandleForUpdatingAtPath:filePath];
-//    [fileHandle seekToEndOfFile];
-//    NSData *expData = [expStack dataUsingEncoding:NSUTF8StringEncoding];
-//    [fileHandle writeData:expData]; //追加写入数据
-//    [fileHandle closeFile];
+    NSString *expStack = [arr componentsJoinedByString:@"\n"];
+    NSString *crashInfo = [NSString stringWithFormat:@"=============Crash Report=============\nTime: %@\nName: %@\nReason: %@\nCallStackSymbols:\n%@\n\n\n",time,name,reason,expStack];
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSMutableArray *records = [userDefault arrayForKey:APMCrashRecord].mutableCopy;
@@ -46,7 +33,7 @@ void UncaughtExceptionHandler(NSException *exception) {
     NSDictionary *expDict = @{@"name":name,
                               @"reason":reason,
                               @"time":time,
-                              @"stack":expStack};
+                              @"crashInfo":crashInfo};
     [records addObject:expDict];
     [userDefault setObject:records forKey:APMCrashRecord];
 }
@@ -70,6 +57,12 @@ void UncaughtExceptionHandler(NSException *exception) {
 + (NSUncaughtExceptionHandler *)getHandler
 {
      return NSGetUncaughtExceptionHandler();
+}
+
++ (void)enterCrashReport
+{
+//    CrashListVC *vc = [[CrashListVC alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 + (NSString *)getLogFilePath

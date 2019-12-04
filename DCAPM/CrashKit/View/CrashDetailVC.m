@@ -7,11 +7,11 @@
 //
 
 #import "CrashDetailVC.h"
-#import <Masonry/Masonry.h>
 
 @interface CrashDetailVC ()
 
 @property (nonatomic,strong) UILabel *stackLabel;
+@property (nonatomic,strong) UITextView *textview;
 
 @end
 
@@ -23,17 +23,40 @@
     
     self.title = @"崩溃信息";
     
-    self.stackLabel = [[UILabel alloc] init];
-    self.stackLabel.textColor = UIColor.blackColor;
-    self.stackLabel.backgroundColor = UIColor.whiteColor;
-    self.stackLabel.font = [UIFont systemFontOfSize:20];
-    self.stackLabel.numberOfLines = 0;
-    [self.view addSubview:self.stackLabel];
-    [self.stackLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.bottom.equalTo(self.view);
-    }];
+    self.textview.text = [self.data objectForKey:@"crashInfo"];
+    [self.view addSubview:self.textview];
+    UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGesture:)];
+    [self.textview addGestureRecognizer:pinchGesture];
+}
+
+#pragma mark - Getter
+
+- (UITextView *)textview
+{
+    if (_textview == nil) {
+        _textview = [[UITextView alloc] initWithFrame:self.view.bounds];
+        _textview.editable = NO;
+        _textview.font = [UIFont systemFontOfSize:13];
+    }
+    return _textview;
+}
+
+#pragma mark - TextView
+
+- (void)pinchGesture:(UIPinchGestureRecognizer *)gestureRecognizer
+{
+    NSLog(@"*** Pinch: Scale: %f Velocity: %f", gestureRecognizer.scale, gestureRecognizer.velocity);
+
+    UIFont *font = self.textview.font;
+    CGFloat pointSize = font.pointSize;
+    NSString *fontName = font.fontName;
+
+    pointSize = ((gestureRecognizer.velocity > 0) ? 1 : -1) * 0.5 + pointSize;
     
-    self.stackLabel.text = [self.data objectForKey:@"stack"];
+    if (pointSize < 13) pointSize = 13;
+    if (pointSize > 36) pointSize = 36;
+    
+    self.textview.font = [UIFont fontWithName:fontName size:pointSize];
 }
 
 @end

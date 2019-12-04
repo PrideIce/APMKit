@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4BEB19556C542E1F0BB104E0 /* libPods-DCAPM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACDCBC08216F65A9B36DE073 /* libPods-DCAPM.a */; };
 		F858F3F12393911300057DB4 /* CrashDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F858F3F02393911300057DB4 /* CrashDetailVC.m */; };
+		F8869C9A239759A70082C6C7 /* UIWindow+APM.m in Sources */ = {isa = PBXBuildFile; fileRef = F8869C99239759A70082C6C7 /* UIWindow+APM.m */; };
+		F8869CA02397827B0082C6C7 /* UIView+APM.m in Sources */ = {isa = PBXBuildFile; fileRef = F8869C9F2397827B0082C6C7 /* UIView+APM.m */; };
 		F89110732392601100A94A7C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F89110722392601100A94A7C /* AppDelegate.m */; };
 		F89110762392601100A94A7C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F89110752392601100A94A7C /* SceneDelegate.m */; };
 		F89110792392601100A94A7C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F89110782392601100A94A7C /* ViewController.m */; };
@@ -18,6 +20,8 @@
 		F89110842392601300A94A7C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F89110832392601300A94A7C /* main.m */; };
 		F891108C2392645600A94A7C /* CrashKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F891108B2392645600A94A7C /* CrashKit.m */; };
 		F891109123926B3E00A94A7C /* CrashListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F891109023926B3E00A94A7C /* CrashListVC.m */; };
+		F8A59AC2239660B800C4AE76 /* APMMonitorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A59AC1239660B800C4AE76 /* APMMonitorVC.m */; };
+		F8BBB74523966A76002864AD /* APMKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BBB74423966A76002864AD /* APMKit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		B79B792080D6356315CFED69 /* Pods-DCAPM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCAPM.debug.xcconfig"; path = "Target Support Files/Pods-DCAPM/Pods-DCAPM.debug.xcconfig"; sourceTree = "<group>"; };
 		F858F3EF2393911300057DB4 /* CrashDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrashDetailVC.h; sourceTree = "<group>"; };
 		F858F3F02393911300057DB4 /* CrashDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrashDetailVC.m; sourceTree = "<group>"; };
+		F8869C98239759A70082C6C7 /* UIWindow+APM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+APM.h"; sourceTree = "<group>"; };
+		F8869C99239759A70082C6C7 /* UIWindow+APM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+APM.m"; sourceTree = "<group>"; };
+		F8869C9E2397827B0082C6C7 /* UIView+APM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+APM.h"; sourceTree = "<group>"; };
+		F8869C9F2397827B0082C6C7 /* UIView+APM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+APM.m"; sourceTree = "<group>"; };
 		F891106E2392601100A94A7C /* DCAPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCAPM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F89110712392601100A94A7C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F89110722392601100A94A7C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -42,6 +50,11 @@
 		F891108B2392645600A94A7C /* CrashKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrashKit.m; sourceTree = "<group>"; };
 		F891108F23926B3E00A94A7C /* CrashListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrashListVC.h; sourceTree = "<group>"; };
 		F891109023926B3E00A94A7C /* CrashListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrashListVC.m; sourceTree = "<group>"; };
+		F8A59AC0239660B800C4AE76 /* APMMonitorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APMMonitorVC.h; sourceTree = "<group>"; };
+		F8A59AC1239660B800C4AE76 /* APMMonitorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APMMonitorVC.m; sourceTree = "<group>"; };
+		F8BBB74323966A76002864AD /* APMKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APMKit.h; sourceTree = "<group>"; };
+		F8BBB74423966A76002864AD /* APMKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APMKit.m; sourceTree = "<group>"; };
+		F8C784C6239651A70045300E /* APMKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "APMKit-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +107,7 @@
 		F89110702392601100A94A7C /* DCAPM */ = {
 			isa = PBXGroup;
 			children = (
+				F8A59ABE2396601B00C4AE76 /* APMKit */,
 				F891108D23926AE500A94A7C /* CrashKit */,
 				F89110712392601100A94A7C /* AppDelegate.h */,
 				F89110722392601100A94A7C /* AppDelegate.m */,
@@ -127,6 +141,30 @@
 				F891109023926B3E00A94A7C /* CrashListVC.m */,
 				F858F3EF2393911300057DB4 /* CrashDetailVC.h */,
 				F858F3F02393911300057DB4 /* CrashDetailVC.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F8A59ABE2396601B00C4AE76 /* APMKit */ = {
+			isa = PBXGroup;
+			children = (
+				F8A59ABF2396607200C4AE76 /* View */,
+				F8C784C6239651A70045300E /* APMKit-Prefix.pch */,
+				F8BBB74323966A76002864AD /* APMKit.h */,
+				F8BBB74423966A76002864AD /* APMKit.m */,
+				F8869C98239759A70082C6C7 /* UIWindow+APM.h */,
+				F8869C99239759A70082C6C7 /* UIWindow+APM.m */,
+				F8869C9E2397827B0082C6C7 /* UIView+APM.h */,
+				F8869C9F2397827B0082C6C7 /* UIView+APM.m */,
+			);
+			path = APMKit;
+			sourceTree = "<group>";
+		};
+		F8A59ABF2396607200C4AE76 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F8A59AC0239660B800C4AE76 /* APMMonitorVC.h */,
+				F8A59AC1239660B800C4AE76 /* APMMonitorVC.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -229,11 +267,15 @@
 			files = (
 				F891109123926B3E00A94A7C /* CrashListVC.m in Sources */,
 				F891108C2392645600A94A7C /* CrashKit.m in Sources */,
+				F8869CA02397827B0082C6C7 /* UIView+APM.m in Sources */,
+				F8869C9A239759A70082C6C7 /* UIWindow+APM.m in Sources */,
+				F8A59AC2239660B800C4AE76 /* APMMonitorVC.m in Sources */,
 				F858F3F12393911300057DB4 /* CrashDetailVC.m in Sources */,
 				F89110792392601100A94A7C /* ViewController.m in Sources */,
 				F89110732392601100A94A7C /* AppDelegate.m in Sources */,
 				F89110842392601300A94A7C /* main.m in Sources */,
 				F89110762392601100A94A7C /* SceneDelegate.m in Sources */,
+				F8BBB74523966A76002864AD /* APMKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,13 +417,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W9A5MY4HFR;
+				DEVELOPMENT_TEAM = RA3S34K4EA;
+				GCC_PREFIX_HEADER = "DCAPM/APMKit/APMKit-Prefix.pch";
 				INFOPLIST_FILE = DCAPM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.coolwind.DCAPM;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dachen.EDA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -393,13 +437,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W9A5MY4HFR;
+				DEVELOPMENT_TEAM = RA3S34K4EA;
+				GCC_PREFIX_HEADER = "DCAPM/APMKit/APMKit-Prefix.pch";
 				INFOPLIST_FILE = DCAPM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.coolwind.DCAPM;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dachen.EDA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

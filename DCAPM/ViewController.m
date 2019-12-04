@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"监控系统";
+    self.title = @"APM Demo";
 }
 
 - (IBAction)crashAction:(id)sender
