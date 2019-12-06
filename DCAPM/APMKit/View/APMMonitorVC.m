@@ -13,6 +13,9 @@
 
 @interface APMMonitorVC ()
 
+@property (nonatomic,strong) UIButton *crashBtn;
+@property (nonatomic,strong) UIButton *exitBtn;
+
 @end
 
 @implementation APMMonitorVC
@@ -42,7 +45,23 @@
     [super viewDidLoad];
     
     self.title = @"监控系统";
-    self.view.backgroundColor = UIColor.blueColor;
+    self.view.backgroundColor = UIColor.whiteColor;
+    
+    [self.view addSubview:self.crashBtn];
+    [self.crashBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(60));
+        make.height.equalTo(@(30));
+        make.center.equalTo(self.view);
+    }];
+    
+    CGFloat bottomHeight = -30 - APMSafeBottomHeight;
+    [self.view addSubview:self.exitBtn];
+    [self.exitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(60));
+        make.height.equalTo(@(30));
+        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(self.view).offset(bottomHeight);
+    }];
 }
 
 + (void)show
@@ -68,18 +87,56 @@
         CGRect frame = UIScreen.mainScreen.applicationFrame;
         frame.origin.y = -frame.size.height;
         
-        [UIView animateWithDuration:0.4 animations:^{
-            APMMonitorVC.navVc.view.frame = frame;
-        } completion:^(BOOL finished) {
-            [APMMonitorVC.navVc.view removeFromSuperview];
-        }];
+        APMMonitorVC.navVc.view.frame = frame;
+        [APMMonitorVC.navVc.view removeFromSuperview];
     }
 }
+
+#pragma mark - Getter
+
+- (UIButton *)crashBtn
+{
+    if (!_crashBtn) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitleColor:APMFontDefaultColor forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:14];
+        [button setTitle:@"Crash" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(crashAction:) forControlEvents:UIControlEventTouchUpInside];
+        button.layer.borderWidth = 1;
+        button.layer.cornerRadius = 5;
+        button.layer.borderColor = APMFontDefaultColor.CGColor;
+        _crashBtn = button;
+    }
+    return _crashBtn;
+}
+
+- (UIButton *)exitBtn
+{
+    if (!_exitBtn) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitleColor:APMFontDefaultColor forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:14];
+        [button setTitle:@"Exit" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(exitAction:) forControlEvents:UIControlEventTouchUpInside];
+        button.layer.borderWidth = 1;
+        button.layer.cornerRadius = 5;
+        button.layer.borderColor = APMFontDefaultColor.CGColor;
+        _exitBtn = button;
+    }
+    return _exitBtn;
+}
+
+#pragma mark - Action
 
 - (void)crashAction:(id)sender
 {
     CrashListVC *vc = [[CrashListVC alloc] init];
     [APMMonitorVC.shared.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)exitAction:(id)sender
+{
+    [APMMonitorVC hide];
 }
 
 

@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CrashModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CrashDetailVC : UIViewController
 
-@property (nonatomic,strong) NSDictionary *data;
+@property (nonatomic,strong) CrashModel *model;
 
 @end
 

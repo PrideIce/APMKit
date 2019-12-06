@@ -22,6 +22,8 @@
 		F891109123926B3E00A94A7C /* CrashListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F891109023926B3E00A94A7C /* CrashListVC.m */; };
 		F8A59AC2239660B800C4AE76 /* APMMonitorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A59AC1239660B800C4AE76 /* APMMonitorVC.m */; };
 		F8BBB74523966A76002864AD /* APMKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BBB74423966A76002864AD /* APMKit.m */; };
+		F8C15F5E239A2568004CD50B /* CrashModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = F8C15F5B239A2568004CD50B /* CrashModel.mm */; };
+		F8C15F62239A2A4D004CD50B /* APMDBManger.mm in Sources */ = {isa = PBXBuildFile; fileRef = F8C15F61239A2A4D004CD50B /* APMDBManger.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,11 @@
 		F8A59AC1239660B800C4AE76 /* APMMonitorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APMMonitorVC.m; sourceTree = "<group>"; };
 		F8BBB74323966A76002864AD /* APMKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APMKit.h; sourceTree = "<group>"; };
 		F8BBB74423966A76002864AD /* APMKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APMKit.m; sourceTree = "<group>"; };
+		F8C15F5B239A2568004CD50B /* CrashModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CrashModel.mm; sourceTree = "<group>"; };
+		F8C15F5C239A2568004CD50B /* CrashModel+WCTTableCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CrashModel+WCTTableCoding.h"; sourceTree = "<group>"; };
+		F8C15F5D239A2568004CD50B /* CrashModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrashModel.h; sourceTree = "<group>"; };
+		F8C15F60239A2A4D004CD50B /* APMDBManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APMDBManger.h; sourceTree = "<group>"; };
+		F8C15F61239A2A4D004CD50B /* APMDBManger.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = APMDBManger.mm; sourceTree = "<group>"; };
 		F8C784C6239651A70045300E /* APMKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "APMKit-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +134,7 @@
 		F891108D23926AE500A94A7C /* CrashKit */ = {
 			isa = PBXGroup;
 			children = (
+				F8C15F5A239A24E6004CD50B /* Model */,
 				F891108E23926AFD00A94A7C /* View */,
 				F891108A2392645600A94A7C /* CrashKit.h */,
 				F891108B2392645600A94A7C /* CrashKit.m */,
@@ -148,6 +156,7 @@
 		F8A59ABE2396601B00C4AE76 /* APMKit */ = {
 			isa = PBXGroup;
 			children = (
+				F8C15F5F239A2A32004CD50B /* Model */,
 				F8A59ABF2396607200C4AE76 /* View */,
 				F8C784C6239651A70045300E /* APMKit-Prefix.pch */,
 				F8BBB74323966A76002864AD /* APMKit.h */,
@@ -167,6 +176,25 @@
 				F8A59AC1239660B800C4AE76 /* APMMonitorVC.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F8C15F5A239A24E6004CD50B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F8C15F5B239A2568004CD50B /* CrashModel.mm */,
+				F8C15F5C239A2568004CD50B /* CrashModel+WCTTableCoding.h */,
+				F8C15F5D239A2568004CD50B /* CrashModel.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F8C15F5F239A2A32004CD50B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F8C15F60239A2A4D004CD50B /* APMDBManger.h */,
+				F8C15F61239A2A4D004CD50B /* APMDBManger.mm */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +295,7 @@
 			files = (
 				F891109123926B3E00A94A7C /* CrashListVC.m in Sources */,
 				F891108C2392645600A94A7C /* CrashKit.m in Sources */,
+				F8C15F62239A2A4D004CD50B /* APMDBManger.mm in Sources */,
 				F8869CA02397827B0082C6C7 /* UIView+APM.m in Sources */,
 				F8869C9A239759A70082C6C7 /* UIWindow+APM.m in Sources */,
 				F8A59AC2239660B800C4AE76 /* APMMonitorVC.m in Sources */,
@@ -276,6 +305,7 @@
 				F89110842392601300A94A7C /* main.m in Sources */,
 				F89110762392601100A94A7C /* SceneDelegate.m in Sources */,
 				F8BBB74523966A76002864AD /* APMKit.m in Sources */,
+				F8C15F5E239A2568004CD50B /* CrashModel.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

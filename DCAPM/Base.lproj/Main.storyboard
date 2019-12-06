@@ -19,22 +19,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3t-wq-5bi">
-                                <rect key="frame" x="181" y="237" width="41" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Crash"/>
-                                <connections>
-                                    <action selector="crashAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0KG-25-0ig"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="三手指下滑，调出监控画面，三手指上滑关闭画面。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKI-sx-2W4">
+                                <rect key="frame" x="30" y="327.5" width="354" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="FKI-sx-2W4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6mq-SA-eBC"/>
+                            <constraint firstItem="FKI-sx-2W4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="ASs-Ac-crk"/>
+                            <constraint firstAttribute="trailing" secondItem="FKI-sx-2W4" secondAttribute="trailing" constant="30" id="YzE-nY-lvz"/>
+                            <constraint firstItem="FKI-sx-2W4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="tLo-uj-Rct"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ODw-pN-NB3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="562" y="3"/>
+            <point key="canvasLocation" x="560.86956521739137" y="2.6785714285714284"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WKn-Z2-fbQ">

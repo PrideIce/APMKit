@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSUncaughtExceptionHandler *)getHandler;
 
-+ (void)enterCrashReport;
++ (NSArray *)getAllCrashRecords;
 
 @end
 

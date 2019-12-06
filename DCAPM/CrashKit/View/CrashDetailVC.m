@@ -21,9 +21,14 @@
 {
     [super viewDidLoad];
     
-    self.title = @"崩溃信息";
+    self.title = @"崩溃日志";
     
-    self.textview.text = [self.data objectForKey:@"crashInfo"];
+    NSString *reason = self.model.reason ?: @"";
+    NSString *name = self.model.name ?: @"";
+    NSString *time = self.model.timeDate ?: @"";
+    NSString *expStack = self.model.stack ?: @"";
+    NSString *crashInfo = [NSString stringWithFormat:@"=============Crash Report=============\nTime: %@\nName: %@\nReason: %@\nCallStackSymbols:\n%@\n\n\n",time,name,reason,expStack];
+    self.textview.text = crashInfo;
     [self.view addSubview:self.textview];
     UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGesture:)];
     [self.textview addGestureRecognizer:pinchGesture];

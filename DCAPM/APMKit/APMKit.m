@@ -33,16 +33,4 @@
     [UIWindow initAPM];
 }
 
-- (void)enterMonitor
-{
-    self.displaying = YES;
-    APMMonitorVC *vc = [[APMMonitorVC alloc] init];
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:vc animated:YES completion:nil];
-}
-
-- (void)leaveMonitor
-{
-    self.displaying = NO;
-}
-
 @end

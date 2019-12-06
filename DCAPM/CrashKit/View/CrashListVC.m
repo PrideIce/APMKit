@@ -9,6 +9,7 @@
 #import "CrashListVC.h"
 #import "CrashKit.h"
 #import "CrashDetailVC.h"
+#import "CrashModel.h"
 
 extern NSString *APMCrashRecord;
 
@@ -26,7 +27,7 @@ extern NSString *APMCrashRecord;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"崩溃日志";
+    self.title = @"崩溃列表";
     self.view.backgroundColor = UIColor.whiteColor;
     
     [self initData];
@@ -34,7 +35,7 @@ extern NSString *APMCrashRecord;
 
 - (void)initData
 {
-    NSArray *crashArray = [[NSUserDefaults standardUserDefaults] objectForKey:APMCrashRecord];
+    NSArray *crashArray = [CrashKit getAllCrashRecords];
     self.dataArray = crashArray ?: @[];
     if (self.dataArray.count > 0) {
         [self.view addSubview:self.tableView];
@@ -80,8 +81,8 @@ extern NSString *APMCrashRecord;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    NSDictionary *dict = [self.dataArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", dict[@"name"], dict[@"time"]];
+    CrashModel *model = [self.dataArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", model.timeDate, model.name];
     return cell;
 }
 
@@ -112,7 +113,7 @@ extern NSString *APMCrashRecord;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     CrashDetailVC *vc = [[CrashDetailVC alloc] init];
-    vc.data = [self.dataArray objectAtIndex:indexPath.row];
+    vc.model = [self.dataArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

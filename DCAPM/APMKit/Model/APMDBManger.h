@@ -1,20 +1,19 @@
 //
-//  APMKit.h
+//  APMDBManger.h
 //  DCAPM
 //
-//  Created by 陈逸辰 on 2019/12/3.
+//  Created by 陈逸辰 on 2019/12/6.
 //  Copyright © 2019 陈逸辰. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <WCDB/WCDB.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface APMKit : NSObject
+@interface APMDBManger : NSObject
 
-+ (instancetype)shared;
-
-+ (void)initAPM;
++ (WCTDatabase *)getDB;
 
 @end
 

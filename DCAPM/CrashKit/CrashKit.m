@@ -8,6 +8,7 @@
 
 #import "CrashKit.h"
 #import "CrashListVC.h"
+#import "CrashModel.h"
 
 NSString *APMCrashRecord = @"APMCrashRecord";
 
@@ -20,22 +21,19 @@ void UncaughtExceptionHandler(NSException *exception) {
     NSString *name = [exception name];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSString *time= [formatter stringFromDate:[NSDate date]];
+    NSDate *date = [NSDate date];
+    NSString *timeStamp = [NSString stringWithFormat:@"%lld", (long long)([date timeIntervalSince1970] * 1000)];
+    NSString *timeDate = [formatter stringFromDate:date];
     NSArray *arr = [exception callStackSymbols];
     NSString *expStack = [arr componentsJoinedByString:@"\n"];
-    NSString *crashInfo = [NSString stringWithFormat:@"=============Crash Report=============\nTime: %@\nName: %@\nReason: %@\nCallStackSymbols:\n%@\n\n\n",time,name,reason,expStack];
     
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *records = [userDefault arrayForKey:APMCrashRecord].mutableCopy;
-    if (!records) {
-        records = @[].mutableCopy;
-    }
-    NSDictionary *expDict = @{@"name":name,
-                              @"reason":reason,
-                              @"time":time,
-                              @"crashInfo":crashInfo};
-    [records addObject:expDict];
-    [userDefault setObject:records forKey:APMCrashRecord];
+    CrashModel *model = [[CrashModel alloc] init];
+    model.name = name;
+    model.reason = reason;
+    model.timeDate = timeDate;
+    model.timeStamp = timeStamp;
+    model.stack = expStack;
+    [model insertToDB];
 }
 
 @implementation CrashKit
@@ -59,16 +57,15 @@ void UncaughtExceptionHandler(NSException *exception) {
      return NSGetUncaughtExceptionHandler();
 }
 
-+ (void)enterCrashReport
-{
-//    CrashListVC *vc = [[CrashListVC alloc] init];
-//    [self.navigationController pushViewController:vc animated:YES];
-}
-
 + (NSString *)getLogFilePath
 {
     NSString *filePath = [applicationDocumentsDirectory() stringByAppendingPathComponent:@"Exception.txt"];
     return filePath;
+}
+
++ (NSArray *)getAllCrashRecords
+{
+    return [CrashModel getAllRecords];
 }
  
 
