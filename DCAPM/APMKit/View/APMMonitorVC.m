@@ -13,6 +13,7 @@
 
 @interface APMMonitorVC ()
 
+@property (nonatomic) BOOL isAnimating;
 @property (nonatomic,strong) UIButton *crashBtn;
 @property (nonatomic,strong) UIButton *exitBtn;
 
@@ -36,6 +37,9 @@
     static dispatch_once_t sencondToken;
     dispatch_once(&sencondToken, ^{
         navVc = [[UINavigationController alloc] initWithRootViewController:APMMonitorVC.shared];
+        CGRect frame = UIScreen.mainScreen.applicationFrame;
+        frame.origin.y = -frame.size.height;
+        navVc.view.frame = frame;
     });
     return navVc;
 }
@@ -66,29 +70,36 @@
 
 + (void)show
 {
-    if (APMMonitorVC.navVc.view.superview == nil) {
+    if (APMMonitorVC.navVc.view.superview == nil && !APMMonitorVC.shared.isAnimating) {
+        APMMonitorVC.shared.isAnimating = YES;
         UIWindow *mainWindow = [UIApplication sharedApplication].keyWindow;
         [mainWindow findAndResignFirstResponder];
         [mainWindow addSubview:APMMonitorVC.navVc.view];
         
-        [UIView animateWithDuration:0.4 animations:^{
+        [UIView animateWithDuration:0.5 animations:^{
             APMMonitorVC.navVc.view.frame = UIScreen.mainScreen.applicationFrame;
         } completion:^(BOOL finished) {
             [[UIApplication sharedApplication].keyWindow findAndResignFirstResponder];
+            APMMonitorVC.shared.isAnimating = NO;
         }];
     }
 }
 
 + (void)hide
 {
-    if (APMMonitorVC.navVc.view.superview != nil) {
+    if (APMMonitorVC.navVc.view.superview != nil && !APMMonitorVC.shared.isAnimating) {
+        APMMonitorVC.shared.isAnimating = YES;
         UIWindow *mainWindow = [UIApplication sharedApplication].keyWindow;
         [mainWindow findAndResignFirstResponder];
         CGRect frame = UIScreen.mainScreen.applicationFrame;
         frame.origin.y = -frame.size.height;
         
-        APMMonitorVC.navVc.view.frame = frame;
-        [APMMonitorVC.navVc.view removeFromSuperview];
+        [UIView animateWithDuration:0.5 animations:^{
+            APMMonitorVC.navVc.view.frame = frame;
+        } completion:^(BOOL finished) {
+            [APMMonitorVC.navVc.view removeFromSuperview];
+            APMMonitorVC.shared.isAnimating = NO;
+        }];
     }
 }
 
