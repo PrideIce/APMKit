@@ -17,7 +17,7 @@
 @property(nonatomic, copy) NSString *timeDate;
 @property(nonatomic, copy) NSString *stack;
 
-#pragma mark - 增
+#pragma mark - CRUD
 - (BOOL)insertToDB;
 
 + (NSArray *)getAllRecords;

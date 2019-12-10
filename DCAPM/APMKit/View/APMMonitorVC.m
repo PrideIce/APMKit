@@ -10,11 +10,13 @@
 #import "APMKit.h"
 #import "UIView+APM.h"
 #import "CrashListVC.h"
+#import "NetworkListVC.h"
 
 @interface APMMonitorVC ()
 
 @property (nonatomic) BOOL isAnimating;
 @property (nonatomic,strong) UIButton *crashBtn;
+@property (nonatomic,strong) UIButton *networkBtn;
 @property (nonatomic,strong) UIButton *exitBtn;
 
 @end
@@ -56,6 +58,14 @@
         make.width.equalTo(@(60));
         make.height.equalTo(@(30));
         make.center.equalTo(self.view);
+    }];
+    
+    [self.view addSubview:self.networkBtn];
+    [self.networkBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(60));
+        make.height.equalTo(@(30));
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.crashBtn.mas_bottom).offset(30);
     }];
     
     CGFloat bottomHeight = -30 - APMSafeBottomHeight;
@@ -121,6 +131,22 @@
     return _crashBtn;
 }
 
+- (UIButton *)networkBtn
+{
+    if (!_networkBtn) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitleColor:APMFontDefaultColor forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:14];
+        [button setTitle:@"Network" forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(networkAction:) forControlEvents:UIControlEventTouchUpInside];
+        button.layer.borderWidth = 1;
+        button.layer.cornerRadius = 5;
+        button.layer.borderColor = APMFontDefaultColor.CGColor;
+        _networkBtn = button;
+    }
+    return _networkBtn;
+}
+
 - (UIButton *)exitBtn
 {
     if (!_exitBtn) {
@@ -142,6 +168,12 @@
 - (void)crashAction:(id)sender
 {
     CrashListVC *vc = [[CrashListVC alloc] init];
+    [APMMonitorVC.shared.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)networkAction:(id)sender
+{
+    NetworkListVC *vc = [[NetworkListVC alloc] init];
     [APMMonitorVC.shared.navigationController pushViewController:vc animated:YES];
 }
 

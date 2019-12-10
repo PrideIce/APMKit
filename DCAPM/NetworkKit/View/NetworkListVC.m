@@ -1,31 +1,29 @@
 //
-//  CrashListVC.m
+//  NetworkListVC.m
 //  DCAPM
 //
-//  Created by 陈逸辰 on 2019/11/30.
+//  Created by 陈逸辰 on 2019/12/10.
 //  Copyright © 2019 陈逸辰. All rights reserved.
 //
 
-#import "CrashListVC.h"
-#import "CrashKit.h"
-#import "CrashDetailVC.h"
-#import "CrashModel.h"
+#import "NetworkListVC.h"
+#import "NetworkModel.h"
+#import "NetworkDetailVC.h"
 
-@interface CrashListVC () <UITableViewDelegate,UITableViewDataSource>
+@interface NetworkListVC () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *dataArray;
 
 @end
 
-@implementation CrashListVC
+@implementation NetworkListVC
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"崩溃列表";
+    self.title = @"网络日志";
     self.view.backgroundColor = UIColor.whiteColor;
     
     [self initData];
@@ -33,7 +31,7 @@
 
 - (void)initData
 {
-    NSArray *crashArray = [CrashKit getAllCrashRecords];
+    NSArray *crashArray = [NetworkModel getAllRecords];
     self.dataArray = crashArray ?: @[];
     if (self.dataArray.count > 0) {
         [self.view addSubview:self.tableView];
@@ -79,8 +77,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    CrashModel *model = [self.dataArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", model.timeDate, model.name];
+    NetworkModel *model = [self.dataArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", model.requestTime, model.request];
     return cell;
 }
 
@@ -110,7 +108,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    CrashDetailVC *vc = [[CrashDetailVC alloc] init];
+    NetworkDetailVC *vc = [[NetworkDetailVC alloc] init];
     vc.model = [self.dataArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }

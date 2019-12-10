@@ -12,7 +12,7 @@
 
 @implementation UIWindow (APM)
 
-+ (void)initAPM
++ (void)startAPM
 {
     Class class = [UIWindow class];
     

@@ -25,7 +25,7 @@ WCDB_SYNTHESIZE(CrashModel, stack)
 
 WCDB_PRIMARY_ASC_AUTO_INCREMENT(CrashModel, crashId)
 
-#pragma mark - DB
+#pragma mark - CRUD
 - (BOOL)insertToDB
 {
     self.isAutoIncrement = YES;

@@ -8,6 +8,7 @@
 
 #import "APMDBManger.h"
 #import "CrashModel.h"
+#import "NetworkModel.h"
 
 static NSString * const AMPDataBase = @"Documents/DataBase/AMPDB.db";
 
@@ -55,8 +56,10 @@ static NSString * const AMPDataBase = @"Documents/DataBase/AMPDB.db";
 + (void)createTable
 {
     NSString *crashTable = NSStringFromClass(CrashModel.class);
+    NSString *networkTable = NSStringFromClass(NetworkModel.class);
     if ([APMDBManger.shared.wcdb canOpen]) {
         [APMDBManger.shared.wcdb createTableAndIndexesOfName:crashTable withClass:CrashModel.class];
+        [APMDBManger.shared.wcdb createTableAndIndexesOfName:networkTable withClass:NetworkModel.class];
     }
 }
 

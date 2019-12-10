@@ -28,9 +28,11 @@
     return instance;
 }
 
-+ (void)initAPM
++ (void)startAPM
 {
-    [UIWindow initAPM];
+    [UIWindow startAPM];
+    
+    [APMURLProtocol startMonitor];
 }
 
 @end
