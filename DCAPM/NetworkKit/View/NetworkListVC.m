@@ -9,6 +9,7 @@
 #import "NetworkListVC.h"
 #import "NetworkModel.h"
 #import "NetworkDetailVC.h"
+#import "NetworkListCell.h"
 
 @interface NetworkListVC () <UITableViewDelegate,UITableViewDataSource>
 
@@ -58,6 +59,9 @@
         _tableView.backgroundColor = UIColor.whiteColor;
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.estimatedRowHeight = 130;
+        _tableView.rowHeight = UITableViewAutomaticDimension;
+        [_tableView registerNib:[UINib nibWithNibName:@"NetworkListCell" bundle:nil] forCellReuseIdentifier:@"NetworkListCell"];
     }
     return _tableView;
 }
@@ -66,19 +70,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataArray.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"CrashListCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-    }
-    
+    static NSString *cellIdentifier = @"NetworkListCell";
+    NetworkListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     NetworkModel *model = [self.dataArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", model.requestTime, model.request.description];
+    cell.model = model;
     return cell;
 }
 
@@ -89,7 +89,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return nil;
+    return [UIView new];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -99,7 +99,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    return nil;
+    return [UIView new];
 }
 
 #pragma mark - UITableViewDelegate

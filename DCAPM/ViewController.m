@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "CrashListVC.h"
+#import "APMMonitorVC.h"
 
 @interface ViewController ()
 
@@ -20,6 +21,12 @@
     // Do any additional setup after loading the view.
     self.title = @"APM Demo";
 }
+
+- (IBAction)monitorAction:(id)sender
+{
+    [APMMonitorVC show];
+}
+
 
 - (IBAction)crashAction:(id)sender
 {

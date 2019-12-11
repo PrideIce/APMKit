@@ -12,6 +12,8 @@
 		F80F6CEE239F4891006B3DF6 /* APMURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = F80F6CED239F4891006B3DF6 /* APMURLSessionConfiguration.m */; };
 		F8314170239F78CA005FFF64 /* NetworkModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = F831416D239F78CA005FFF64 /* NetworkModel.mm */; };
 		F858F3F12393911300057DB4 /* CrashDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F858F3F02393911300057DB4 /* CrashDetailVC.m */; };
+		F858F3F523A12B2300057DB4 /* NetworkListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F858F3F323A12B2300057DB4 /* NetworkListCell.m */; };
+		F858F3F623A12B2300057DB4 /* NetworkListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F858F3F423A12B2300057DB4 /* NetworkListCell.xib */; };
 		F8869C9A239759A70082C6C7 /* UIWindow+APM.m in Sources */ = {isa = PBXBuildFile; fileRef = F8869C99239759A70082C6C7 /* UIWindow+APM.m */; };
 		F8869CA02397827B0082C6C7 /* UIView+APM.m in Sources */ = {isa = PBXBuildFile; fileRef = F8869C9F2397827B0082C6C7 /* UIView+APM.m */; };
 		F89110732392601100A94A7C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F89110722392601100A94A7C /* AppDelegate.m */; };
@@ -44,6 +46,9 @@
 		F831416F239F78CA005FFF64 /* NetworkModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkModel.h; sourceTree = "<group>"; };
 		F858F3EF2393911300057DB4 /* CrashDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrashDetailVC.h; sourceTree = "<group>"; };
 		F858F3F02393911300057DB4 /* CrashDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrashDetailVC.m; sourceTree = "<group>"; };
+		F858F3F223A12B2300057DB4 /* NetworkListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkListCell.h; sourceTree = "<group>"; };
+		F858F3F323A12B2300057DB4 /* NetworkListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkListCell.m; sourceTree = "<group>"; };
+		F858F3F423A12B2300057DB4 /* NetworkListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkListCell.xib; sourceTree = "<group>"; };
 		F8869C98239759A70082C6C7 /* UIWindow+APM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+APM.h"; sourceTree = "<group>"; };
 		F8869C99239759A70082C6C7 /* UIWindow+APM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+APM.m"; sourceTree = "<group>"; };
 		F8869C9E2397827B0082C6C7 /* UIView+APM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+APM.h"; sourceTree = "<group>"; };
@@ -244,6 +249,9 @@
 				F8EBA3A6239FB79100A4B0E6 /* NetworkListVC.m */,
 				F8EBA3A8239FB9C600A4B0E6 /* NetworkDetailVC.h */,
 				F8EBA3A9239FB9C600A4B0E6 /* NetworkDetailVC.m */,
+				F858F3F223A12B2300057DB4 /* NetworkListCell.h */,
+				F858F3F323A12B2300057DB4 /* NetworkListCell.m */,
+				F858F3F423A12B2300057DB4 /* NetworkListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,6 +316,7 @@
 			files = (
 				F89110812392601300A94A7C /* LaunchScreen.storyboard in Resources */,
 				F891107E2392601300A94A7C /* Assets.xcassets in Resources */,
+				F858F3F623A12B2300057DB4 /* NetworkListCell.xib in Resources */,
 				F891107C2392601100A94A7C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +366,7 @@
 				F8EBA3AA239FB9C600A4B0E6 /* NetworkDetailVC.m in Sources */,
 				F89110792392601100A94A7C /* ViewController.m in Sources */,
 				F89110732392601100A94A7C /* AppDelegate.m in Sources */,
+				F858F3F523A12B2300057DB4 /* NetworkListCell.m in Sources */,
 				F89110842392601300A94A7C /* main.m in Sources */,
 				F8EBA3A7239FB79200A4B0E6 /* NetworkListVC.m in Sources */,
 				F89110762392601100A94A7C /* SceneDelegate.m in Sources */,

@@ -25,12 +25,21 @@
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCF-3y-Vc7">
+                                <rect key="frame" x="192" y="433" width="31" height="30"/>
+                                <state key="normal" title="面板"/>
+                                <connections>
+                                    <action selector="monitorAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ft6-j5-9JJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="xCF-3y-Vc7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5xn-rB-i7k"/>
                             <constraint firstItem="FKI-sx-2W4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6mq-SA-eBC"/>
                             <constraint firstItem="FKI-sx-2W4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="ASs-Ac-crk"/>
                             <constraint firstAttribute="trailing" secondItem="FKI-sx-2W4" secondAttribute="trailing" constant="30" id="YzE-nY-lvz"/>
+                            <constraint firstItem="xCF-3y-Vc7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cKZ-4r-sJ8"/>
                             <constraint firstItem="FKI-sx-2W4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="tLo-uj-Rct"/>
                         </constraints>
                     </view>

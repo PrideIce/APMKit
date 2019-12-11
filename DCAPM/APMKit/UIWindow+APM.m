@@ -63,7 +63,7 @@
     if (allDown) {
         [APMMonitorVC show];
     } else {
-        [APMMonitorVC hide];
+//        [APMMonitorVC hide];
     }
 }
 
