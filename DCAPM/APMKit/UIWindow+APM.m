@@ -44,7 +44,7 @@
 - (void)apm_sendEvent:(UIEvent *)event
 {
     if (event.type == UIEventTypeTouches) {
-        if (event.allTouches.count == 3) {
+        if (event.allTouches.count == self.touchesToShow) {
             [self handleEvent:event];
         }
     }
@@ -65,6 +65,15 @@
     } else {
         [APMMonitorVC hide];
     }
+}
+
+- (int)touchesToShow
+{
+#if TARGET_IPHONE_SIMULATOR
+    return 2;
+#else
+    return 3;
+#endif
 }
 
 @end

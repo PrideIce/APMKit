@@ -22,12 +22,12 @@
     
     self.title = @"网络详情";
     
-    NSString *reason = self.model.request ?: @"";
+    NSString *reason = self.model.request.description ?: @"";
     NSString *name =  self.model.data ?: @"";
     NSString *time = self.model.requestTime ?: @"";
     NSString *expStack = self.model.response ?: @"";
     NSString *crashInfo = [NSString stringWithFormat:@"=============Crash Report=============\nTime: %@\nName: %@\nReason: %@\nCallStackSymbols:\n%@\n\n\n",time,name,reason,expStack];
-    self.textview.text = crashInfo;
+    self.textview.text = reason;
     [self.view addSubview:self.textview];
     UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGesture:)];
     [self.textview addGestureRecognizer:pinchGesture];

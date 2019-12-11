@@ -11,7 +11,8 @@
 @interface NetworkModel : NSObject
 
 @property(nonatomic, assign) NSInteger recordId;
-@property (nonatomic, copy) NSString *request;
+@property (nonatomic, strong) NSURLRequest *request;
+//@property (nonatomic, copy) NSString *request;
 @property (nonatomic, copy) NSString *response;
 @property (nonatomic, copy) NSString *requestTime;
 @property (nonatomic, copy) NSString *responseTime;

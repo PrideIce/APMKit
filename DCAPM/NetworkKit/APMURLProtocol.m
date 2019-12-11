@@ -94,7 +94,7 @@ static NSString *const APMHTTP = @"APMHTTP";//为了避免canInitWithRequest和c
 {
     self.APM_request = self.request;
     self.model = [[NetworkModel alloc] init];
-    self.model.request = self.request.description;
+    self.model.request = self.request;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     self.model.requestTime = [formatter stringFromDate:[NSDate date]];
@@ -117,23 +117,23 @@ static NSString *const APMHTTP = @"APMHTTP";//为了避免canInitWithRequest和c
 - (void)stopLoading
 {
     //获取请求方法
-    //NSString *requestMethod = self.APM_request.HTTPMethod;
-    //NSLog(@"请求方法：%@\n", requestMethod);
+    NSString *requestMethod = self.APM_request.HTTPMethod;
+    NSLog(@"请求方法：%@\n", requestMethod);
 
     //获取请求头
-    //NSDictionary *headers = self.APM_request.allHTTPHeaderFields;
-    //NSLog(@"请求头：\n");
-//    for (NSString *key in headers.allKeys) {
-//        //NSLog(@"%@ : %@", key, headers[key]);
-//    }
-    NSLog(@"%@", self.APM_request.description);
-    NSLog(@"%@", self.APM_response.description);
-    NSLog(@"%@", self.APM_error.description);
+    NSDictionary *headers = self.APM_request.allHTTPHeaderFields;
+    NSLog(@"请求头：\n");
+    for (NSString *key in headers.allKeys) {
+        NSLog(@"%@ : %@", key, headers[key]);
+    }
+//    NSLog(@"%@", self.APM_request.description);
+//    NSLog(@"%@", self.APM_response.description);
+//    NSLog(@"%@", self.APM_error.description);
     //获取请求结果
     NSString *string = [self responseJSONFromData:self.APM_data];
     self.model.data = string;
     BOOL result = [self.model insertToDB];
-    NSLog(@"请求结果：%@", string);
+//    NSLog(@"请求结果：%@", string);
 }
 
 //转换json

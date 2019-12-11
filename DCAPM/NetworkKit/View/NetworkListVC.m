@@ -78,7 +78,7 @@
     }
     
     NetworkModel *model = [self.dataArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", model.requestTime, model.request];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", model.requestTime, model.request.description];
     return cell;
 }
 
