@@ -95,9 +95,7 @@ static NSString *const APMHTTP = @"APMHTTP";//为了避免canInitWithRequest和c
     self.APM_request = self.request;
     self.model = [[NetworkModel alloc] init];
     self.model.request = self.request;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    self.model.requestTime = [formatter stringFromDate:[NSDate date]];
+    self.model.startTime = [[NSDate date] timeIntervalSince1970];
     
     NSURLSessionDataTask *sessionDataTask = [[NSURLSession sharedSession] dataTaskWithRequest:self.request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         //将获取的数据回传给外面的请求
@@ -108,8 +106,9 @@ static NSString *const APMHTTP = @"APMHTTP";//为了避免canInitWithRequest和c
         self.APM_data = data.mutableCopy;
         self.APM_response = response;
         self.APM_error = error;
-        self.model.response = response.description;
+        self.model.response = (NSHTTPURLResponse *)response;
         self.model.error = error.description;
+        self.model.responseTime = [NSString stringWithFormat:@"%lld", (long long)([[NSDate date] timeIntervalSince1970] * 1000)];
     }];
     [sessionDataTask resume];
 }
@@ -117,22 +116,23 @@ static NSString *const APMHTTP = @"APMHTTP";//为了避免canInitWithRequest和c
 - (void)stopLoading
 {
     //获取请求方法
-    NSString *requestMethod = self.APM_request.HTTPMethod;
-    NSLog(@"请求方法：%@\n", requestMethod);
-
-    //获取请求头
-    NSDictionary *headers = self.APM_request.allHTTPHeaderFields;
-    NSLog(@"请求头：\n");
-    for (NSString *key in headers.allKeys) {
-        NSLog(@"%@ : %@", key, headers[key]);
-    }
+//    NSString *requestMethod = self.APM_request.HTTPMethod;
+//    NSLog(@"请求方法：%@\n", requestMethod);
+//
+//    //获取请求头
+//    NSDictionary *headers = self.APM_request.allHTTPHeaderFields;
+//    NSLog(@"请求头：\n");
+//    for (NSString *key in headers.allKeys) {
+//        NSLog(@"%@ : %@", key, headers[key]);
+//    }
 //    NSLog(@"%@", self.APM_request.description);
 //    NSLog(@"%@", self.APM_response.description);
 //    NSLog(@"%@", self.APM_error.description);
+    self.model.totalDuration = [NSString stringWithFormat:@"%fs",[[NSDate date] timeIntervalSince1970] - self.model.startTime];
     //获取请求结果
-    NSString *string = [self responseJSONFromData:self.APM_data];
-    self.model.data = string;
-    BOOL result = [self.model insertToDB];
+//    NSString *string = [self responseJSONFromData:self.APM_data];
+    self.model.data = self.APM_data;
+    [self.model insertToDB];
 //    NSLog(@"请求结果：%@", string);
 }
 

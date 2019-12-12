@@ -12,11 +12,11 @@
 
 @property(nonatomic, assign) NSInteger recordId;
 @property (nonatomic, strong) NSURLRequest *request;
-//@property (nonatomic, copy) NSString *request;
-@property (nonatomic, copy) NSString *response;
-@property (nonatomic, copy) NSString *requestTime;
+@property (nonatomic, strong) NSHTTPURLResponse *response;
+@property (nonatomic, assign) NSTimeInterval startTime;
 @property (nonatomic, copy) NSString *responseTime;
-@property (nonatomic, copy) NSString *data;
+@property (nonatomic, copy) NSString *totalDuration;
+@property (nonatomic, strong) NSData *data;
 @property (nonatomic, copy) NSString *error;
 
 #pragma mark - CRUD

@@ -14,8 +14,9 @@
 WCDB_PROPERTY(recordId)
 WCDB_PROPERTY(request)
 WCDB_PROPERTY(response)
-WCDB_PROPERTY(requestTime)
+WCDB_PROPERTY(startTime)
 WCDB_PROPERTY(responseTime)
+WCDB_PROPERTY(totalDuration)
 WCDB_PROPERTY(data)
 WCDB_PROPERTY(error)
 

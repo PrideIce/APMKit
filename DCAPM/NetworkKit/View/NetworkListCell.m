@@ -20,15 +20,27 @@
 
 @implementation NetworkListCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
 
+    self.typeLabel.layer.masksToBounds = YES;
+    self.typeLabel.layer.cornerRadius = 4;
 }
 
 - (void)setModel:(NetworkModel *)model
 {
     _model = model;
     self.urlLabel.text = model.request.URL.absoluteString;
+    
+    self.typeLabel.text = [NSString stringWithFormat:@" %@ > %@ ", model.request.HTTPMethod, model.response.MIMEType];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:model.startTime];
+    self.timeLabel.text = [NSString stringWithFormat:@"[%ld] %@", (long)model.response.statusCode,[formatter stringFromDate:date]];
+
+    self.uploadSizeLabel.text = @"↑↓";
 }
 
 @end
