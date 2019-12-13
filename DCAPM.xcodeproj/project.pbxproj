@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4BEB19556C542E1F0BB104E0 /* libPods-DCAPM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACDCBC08216F65A9B36DE073 /* libPods-DCAPM.a */; };
+		F805013923A22C1F005796B8 /* NetworkRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F805013723A22C1F005796B8 /* NetworkRecordVC.m */; };
+		F805013A23A22C1F005796B8 /* NetworkRecordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F805013823A22C1F005796B8 /* NetworkRecordVC.xib */; };
+		F805013E23A23023005796B8 /* NetworkRecordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F805013D23A23023005796B8 /* NetworkRecordTableView.m */; };
+		F805014523A251C0005796B8 /* NSData+APM.m in Sources */ = {isa = PBXBuildFile; fileRef = F805014423A251C0005796B8 /* NSData+APM.m */; };
 		F80F6CEB239F47DC006B3DF6 /* APMURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F80F6CEA239F47DC006B3DF6 /* APMURLProtocol.m */; };
 		F80F6CEE239F4891006B3DF6 /* APMURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = F80F6CED239F4891006B3DF6 /* APMURLSessionConfiguration.m */; };
 		F8314170239F78CA005FFF64 /* NetworkModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = F831416D239F78CA005FFF64 /* NetworkModel.mm */; };
@@ -30,13 +34,19 @@
 		F8C15F5E239A2568004CD50B /* CrashModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = F8C15F5B239A2568004CD50B /* CrashModel.mm */; };
 		F8C15F62239A2A4D004CD50B /* APMDBManger.mm in Sources */ = {isa = PBXBuildFile; fileRef = F8C15F61239A2A4D004CD50B /* APMDBManger.mm */; };
 		F8EBA3A7239FB79200A4B0E6 /* NetworkListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EBA3A6239FB79100A4B0E6 /* NetworkListVC.m */; };
-		F8EBA3AA239FB9C600A4B0E6 /* NetworkDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EBA3A9239FB9C600A4B0E6 /* NetworkDetailVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		949033A8D1B92FA22611E85D /* Pods-DCAPM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCAPM.release.xcconfig"; path = "Target Support Files/Pods-DCAPM/Pods-DCAPM.release.xcconfig"; sourceTree = "<group>"; };
 		ACDCBC08216F65A9B36DE073 /* libPods-DCAPM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DCAPM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B79B792080D6356315CFED69 /* Pods-DCAPM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCAPM.debug.xcconfig"; path = "Target Support Files/Pods-DCAPM/Pods-DCAPM.debug.xcconfig"; sourceTree = "<group>"; };
+		F805013623A22C1F005796B8 /* NetworkRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkRecordVC.h; sourceTree = "<group>"; };
+		F805013723A22C1F005796B8 /* NetworkRecordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkRecordVC.m; sourceTree = "<group>"; };
+		F805013823A22C1F005796B8 /* NetworkRecordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkRecordVC.xib; sourceTree = "<group>"; };
+		F805013C23A23023005796B8 /* NetworkRecordTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkRecordTableView.h; sourceTree = "<group>"; };
+		F805013D23A23023005796B8 /* NetworkRecordTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkRecordTableView.m; sourceTree = "<group>"; };
+		F805014323A251C0005796B8 /* NSData+APM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+APM.h"; sourceTree = "<group>"; };
+		F805014423A251C0005796B8 /* NSData+APM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+APM.m"; sourceTree = "<group>"; };
 		F80F6CE9239F47DC006B3DF6 /* APMURLProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APMURLProtocol.h; sourceTree = "<group>"; };
 		F80F6CEA239F47DC006B3DF6 /* APMURLProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APMURLProtocol.m; sourceTree = "<group>"; };
 		F80F6CEC239F4891006B3DF6 /* APMURLSessionConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APMURLSessionConfiguration.h; sourceTree = "<group>"; };
@@ -81,8 +91,6 @@
 		F8C784C6239651A70045300E /* APMKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "APMKit-Prefix.pch"; sourceTree = "<group>"; };
 		F8EBA3A5239FB79100A4B0E6 /* NetworkListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkListVC.h; sourceTree = "<group>"; };
 		F8EBA3A6239FB79100A4B0E6 /* NetworkListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkListVC.m; sourceTree = "<group>"; };
-		F8EBA3A8239FB9C600A4B0E6 /* NetworkDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkDetailVC.h; sourceTree = "<group>"; };
-		F8EBA3A9239FB9C600A4B0E6 /* NetworkDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkDetailVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +120,24 @@
 				949033A8D1B92FA22611E85D /* Pods-DCAPM.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F805013B23A22DD2005796B8 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				F805013C23A23023005796B8 /* NetworkRecordTableView.h */,
+				F805013D23A23023005796B8 /* NetworkRecordTableView.m */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		F805014223A251A2005796B8 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				F805014323A251C0005796B8 /* NSData+APM.h */,
+				F805014423A251C0005796B8 /* NSData+APM.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		F80F6CE8239F4771006B3DF6 /* NetworkKit */ = {
@@ -158,9 +184,7 @@
 		F89110702392601100A94A7C /* DCAPM */ = {
 			isa = PBXGroup;
 			children = (
-				F80F6CE8239F4771006B3DF6 /* NetworkKit */,
 				F8A59ABE2396601B00C4AE76 /* APMKit */,
-				F891108D23926AE500A94A7C /* CrashKit */,
 				F89110712392601100A94A7C /* AppDelegate.h */,
 				F89110722392601100A94A7C /* AppDelegate.m */,
 				F89110742392601100A94A7C /* SceneDelegate.h */,
@@ -201,6 +225,9 @@
 		F8A59ABE2396601B00C4AE76 /* APMKit */ = {
 			isa = PBXGroup;
 			children = (
+				F891108D23926AE500A94A7C /* CrashKit */,
+				F80F6CE8239F4771006B3DF6 /* NetworkKit */,
+				F805014223A251A2005796B8 /* Category */,
 				F8C15F5F239A2A32004CD50B /* DB */,
 				F8A59ABF2396607200C4AE76 /* View */,
 				F8C784C6239651A70045300E /* APMKit-Prefix.pch */,
@@ -245,10 +272,12 @@
 		F8EBA3A4239FB77200A4B0E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F805013B23A22DD2005796B8 /* TableView */,
 				F8EBA3A5239FB79100A4B0E6 /* NetworkListVC.h */,
 				F8EBA3A6239FB79100A4B0E6 /* NetworkListVC.m */,
-				F8EBA3A8239FB9C600A4B0E6 /* NetworkDetailVC.h */,
-				F8EBA3A9239FB9C600A4B0E6 /* NetworkDetailVC.m */,
+				F805013623A22C1F005796B8 /* NetworkRecordVC.h */,
+				F805013723A22C1F005796B8 /* NetworkRecordVC.m */,
+				F805013823A22C1F005796B8 /* NetworkRecordVC.xib */,
 				F858F3F223A12B2300057DB4 /* NetworkListCell.h */,
 				F858F3F323A12B2300057DB4 /* NetworkListCell.m */,
 				F858F3F423A12B2300057DB4 /* NetworkListCell.xib */,
@@ -314,6 +343,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F805013A23A22C1F005796B8 /* NetworkRecordVC.xib in Resources */,
 				F89110812392601300A94A7C /* LaunchScreen.storyboard in Resources */,
 				F891107E2392601300A94A7C /* Assets.xcassets in Resources */,
 				F858F3F623A12B2300057DB4 /* NetworkListCell.xib in Resources */,
@@ -354,16 +384,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F80F6CEE239F4891006B3DF6 /* APMURLSessionConfiguration.m in Sources */,
+				F805013E23A23023005796B8 /* NetworkRecordTableView.m in Sources */,
 				F80F6CEB239F47DC006B3DF6 /* APMURLProtocol.m in Sources */,
 				F8314170239F78CA005FFF64 /* NetworkModel.mm in Sources */,
 				F891109123926B3E00A94A7C /* CrashListVC.m in Sources */,
 				F891108C2392645600A94A7C /* CrashKit.m in Sources */,
 				F8C15F62239A2A4D004CD50B /* APMDBManger.mm in Sources */,
+				F805014523A251C0005796B8 /* NSData+APM.m in Sources */,
 				F8869CA02397827B0082C6C7 /* UIView+APM.m in Sources */,
 				F8869C9A239759A70082C6C7 /* UIWindow+APM.m in Sources */,
 				F8A59AC2239660B800C4AE76 /* APMMonitorVC.m in Sources */,
 				F858F3F12393911300057DB4 /* CrashDetailVC.m in Sources */,
-				F8EBA3AA239FB9C600A4B0E6 /* NetworkDetailVC.m in Sources */,
 				F89110792392601100A94A7C /* ViewController.m in Sources */,
 				F89110732392601100A94A7C /* AppDelegate.m in Sources */,
 				F858F3F523A12B2300057DB4 /* NetworkListCell.m in Sources */,
@@ -371,6 +402,7 @@
 				F8EBA3A7239FB79200A4B0E6 /* NetworkListVC.m in Sources */,
 				F89110762392601100A94A7C /* SceneDelegate.m in Sources */,
 				F8BBB74523966A76002864AD /* APMKit.m in Sources */,
+				F805013923A22C1F005796B8 /* NetworkRecordVC.m in Sources */,
 				F8C15F5E239A2568004CD50B /* CrashModel.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

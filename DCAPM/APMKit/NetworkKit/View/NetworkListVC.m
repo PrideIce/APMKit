@@ -8,7 +8,7 @@
 
 #import "NetworkListVC.h"
 #import "NetworkModel.h"
-#import "NetworkDetailVC.h"
+#import "NetworkRecordVC.h"
 #import "NetworkListCell.h"
 
 @interface NetworkListVC () <UITableViewDelegate,UITableViewDataSource>
@@ -108,7 +108,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NetworkDetailVC *vc = [[NetworkDetailVC alloc] init];
+    NetworkRecordVC *vc = [[NetworkRecordVC alloc] init];
     vc.model = [self.dataArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }

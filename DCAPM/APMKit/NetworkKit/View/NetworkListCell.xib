@@ -41,20 +41,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtr-c3-Hdx">
-                        <rect key="frame" x="51" y="81" width="33" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="JiI-TB-ZFM" firstAttribute="leading" secondItem="EYr-Bp-rvk" secondAttribute="leading" id="5Ub-xq-nEV"/>
                     <constraint firstAttribute="trailing" secondItem="EYr-Bp-rvk" secondAttribute="trailing" constant="10" id="Gz6-P6-gMh"/>
                     <constraint firstItem="YKq-w0-mQ1" firstAttribute="leading" secondItem="EYr-Bp-rvk" secondAttribute="leading" id="Hqq-Vg-y7S"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YKq-w0-mQ1" secondAttribute="bottom" constant="10" id="ID4-jn-AW5"/>
-                    <constraint firstItem="Dtr-c3-Hdx" firstAttribute="leading" secondItem="YKq-w0-mQ1" secondAttribute="trailing" constant="8" id="MJ9-pC-qg2"/>
-                    <constraint firstItem="Dtr-c3-Hdx" firstAttribute="centerY" secondItem="YKq-w0-mQ1" secondAttribute="centerY" id="U3w-wb-zaL"/>
                     <constraint firstItem="JiI-TB-ZFM" firstAttribute="top" secondItem="EYr-Bp-rvk" secondAttribute="bottom" constant="8" id="W9L-YG-Nb1"/>
                     <constraint firstItem="EYr-Bp-rvk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="azk-iV-BXu"/>
                     <constraint firstItem="EYr-Bp-rvk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="dtX-fK-Bg4"/>
@@ -64,10 +56,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="downSizeLabel" destination="YKq-w0-mQ1" id="eHQ-hc-Xy3"/>
+                <outlet property="sizeLabel" destination="YKq-w0-mQ1" id="eHQ-hc-Xy3"/>
                 <outlet property="timeLabel" destination="hwx-vH-uYJ" id="waz-Tx-AvU"/>
                 <outlet property="typeLabel" destination="JiI-TB-ZFM" id="EVh-aP-jn6"/>
-                <outlet property="uploadSizeLabel" destination="Dtr-c3-Hdx" id="b8V-ky-54Y"/>
                 <outlet property="urlLabel" destination="EYr-Bp-rvk" id="Xwf-lE-A3L"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="147.32142857142856"/>

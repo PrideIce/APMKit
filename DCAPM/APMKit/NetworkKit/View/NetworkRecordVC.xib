@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NetworkRecordVC">
+            <connections>
+                <outlet property="segmentControl" destination="pw5-wX-zCf" id="9Ew-lf-2or"/>
+                <outlet property="tableView" destination="sqq-wk-wek" id="52d-PF-k2e"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pw5-wX-zCf">
+                    <rect key="frame" x="60" y="72" width="294" height="32"/>
+                    <segments>
+                        <segment title="请求"/>
+                        <segment title="响应"/>
+                        <segment title="概览"/>
+                        <segment title="时间"/>
+                    </segments>
+                    <connections>
+                        <action selector="selectSegmentAction:" destination="-1" eventType="valueChanged" id="X7o-7r-7pf"/>
+                    </connections>
+                </segmentedControl>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="sqq-wk-wek" customClass="NetworkRecordTableView">
+                    <rect key="frame" x="0.0" y="113" width="414" height="729"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="pw5-wX-zCf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="60" id="0AR-L9-Huq"/>
+                <constraint firstItem="sqq-wk-wek" firstAttribute="top" secondItem="pw5-wX-zCf" secondAttribute="bottom" constant="10" id="2Gz-VS-TC0"/>
+                <constraint firstAttribute="bottom" secondItem="sqq-wk-wek" secondAttribute="bottom" constant="54" id="N3X-85-Wg9"/>
+                <constraint firstAttribute="trailing" secondItem="sqq-wk-wek" secondAttribute="trailing" id="PV9-Xy-Puf"/>
+                <constraint firstItem="pw5-wX-zCf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="72" id="Shu-g5-WSl"/>
+                <constraint firstItem="sqq-wk-wek" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dPC-Ho-EEo"/>
+                <constraint firstAttribute="trailing" secondItem="pw5-wX-zCf" secondAttribute="trailing" constant="60" id="kTt-xe-ZTs"/>
+            </constraints>
+            <point key="canvasLocation" x="-43.478260869565219" y="64.955357142857139"/>
+        </view>
+    </objects>
+</document>

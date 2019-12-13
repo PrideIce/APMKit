@@ -1,8 +1,8 @@
 //
-//  NetworkDetailVC.h
+//  NetworkRecordVC.h
 //  DCAPM
 //
-//  Created by 陈逸辰 on 2019/12/10.
+//  Created by 陈逸辰 on 2019/12/12.
 //  Copyright © 2019 陈逸辰. All rights reserved.
 //
 
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NetworkDetailVC : UIViewController
+@interface NetworkRecordVC : UIViewController
 
 @property (nonatomic,strong) NetworkModel *model;
 
