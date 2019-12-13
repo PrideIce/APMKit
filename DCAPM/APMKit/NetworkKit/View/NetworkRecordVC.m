@@ -54,7 +54,8 @@
     [arr3 addObject:[NetworkRecordEntry entryWithLeftInfo:requestHeader]];
     
     NSMutableArray *arr4 = [NSMutableArray array];
-    [arr4 addObject:[NetworkRecordEntry entryWithLeftInfo:_model.request.HTTPBody.jsonString]];
+    NSString *lineStr = [NSString stringWithFormat:@"%@ %@ %@\n", _model.request.HTTPMethod, _model.request.URL.path, @"HTTP/1.1"];
+    [arr4 addObject:[NetworkRecordEntry entryWithLeftInfo:lineStr]];
     self.requestRowsDict = @{@"消息体":arr1,
                              @"链接":arr2,
                              @"请求头":arr3,

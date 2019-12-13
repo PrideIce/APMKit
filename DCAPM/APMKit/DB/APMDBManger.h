@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface APMDBManger : NSObject
 
-+ (WCTDatabase *)getDB;
++ (WCTDatabase *)defaultDB;
 
 @end
 

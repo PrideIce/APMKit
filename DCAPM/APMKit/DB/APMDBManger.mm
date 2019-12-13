@@ -32,7 +32,7 @@ static NSString * const AMPDataBase = @"Documents/DataBase/AMPDB.db";
     return instance;
 }
 
-+ (WCTDatabase *)getDB
++ (WCTDatabase *)defaultDB
 {
     if (!APMDBManger.shared.wcdb) {
         NSString *DBName = AMPDataBase;
@@ -45,7 +45,7 @@ static NSString * const AMPDataBase = @"Documents/DataBase/AMPDB.db";
 
 + (BOOL)openDB
 {
-    return [[self getDB] canOpen];
+    return [[self defaultDB] canOpen];
 }
 
 + (void)closeDB

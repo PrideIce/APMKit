@@ -16,10 +16,10 @@ static NSString *const APMHTTP = @"APMHTTP";//为了避免canInitWithRequest和c
 
 @property (nonatomic, strong) NSURLConnection *connection;
 
-@property (nonatomic, strong) NSURLRequest *APM_request;
-@property (nonatomic, strong) NSURLResponse *APM_response;
-@property (nonatomic, strong) NSMutableData *APM_data;
-@property (nonatomic, strong) NSError *APM_error;
+@property (nonatomic, strong) NSURLRequest *apm_request;
+@property (nonatomic, strong) NSURLResponse *apm_response;
+@property (nonatomic, strong) NSMutableData *apm_data;
+@property (nonatomic, strong) NSError *apm_error;
 @property (nonatomic, strong) NetworkModel *model;
 
 @end
@@ -93,11 +93,11 @@ static NSString *const APMHTTP = @"APMHTTP";//为了避免canInitWithRequest和c
 }
 
 - (void)startLoading {
-    self.APM_request = self.request;
+    self.apm_request = self.request;
     self.model = [[NetworkModel alloc] init];
     self.model.request = self.request;
     self.model.startTime = [[NSDate date] timeIntervalSince1970];
-    self.APM_data = [NSMutableData data];
+    self.apm_data = [NSMutableData data];
     
     NSURLRequest *request = [[self class] canonicalRequestForRequest:self.request];
     self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
@@ -106,8 +106,8 @@ static NSString *const APMHTTP = @"APMHTTP";//为了避免canInitWithRequest和c
 - (void)stopLoading {
    [self.connection cancel];
     self.model.responseTime = [NSString stringWithFormat:@"%lld", (long long)([[NSDate date] timeIntervalSince1970] * 1000)];
-    self.model.data = self.APM_data;
-    self.model.response = (NSHTTPURLResponse *)self.APM_response;
+    self.model.data = self.apm_data;
+    self.model.response = (NSHTTPURLResponse *)self.apm_response;
     [self.model insertToDB];
 }
 
@@ -132,7 +132,7 @@ didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
 #pragma mark - NSURLConnectionDataDelegate
 -(NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response{
     if (response != nil) {
-        self.APM_response = response;
+        self.apm_response = response;
         [self.client URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
     }
     return request;
@@ -141,12 +141,12 @@ didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
 - (void)connection:(NSURLConnection *)connection
 didReceiveResponse:(NSURLResponse *)response {
     [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowed];
-    self.APM_response = response;
+    self.apm_response = response;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     [self.client URLProtocol:self didLoadData:data];
-    [self.APM_data appendData:data];
+    [self.apm_data appendData:data];
     NSLog(@"receiveData");
 }
 
@@ -170,10 +170,10 @@ didReceiveResponse:(NSURLResponse *)response {
 //
 //@interface APMURLProtocol ()
 //
-//@property (nonatomic, strong) NSURLRequest *APM_request;
-//@property (nonatomic, strong) NSURLResponse *APM_response;
-//@property (nonatomic, strong) NSMutableData *APM_data;
-//@property (nonatomic, strong) NSError *APM_error;
+//@property (nonatomic, strong) NSURLRequest *apm_request;
+//@property (nonatomic, strong) NSURLResponse *apm_response;
+//@property (nonatomic, strong) NSMutableData *apm_data;
+//@property (nonatomic, strong) NSError *apm_error;
 //@property (nonatomic, strong) NetworkModel *model;
 //
 //@end
@@ -248,7 +248,7 @@ didReceiveResponse:(NSURLResponse *)response {
 //
 //- (void)startLoading
 //{
-//    self.APM_request = self.request;
+//    self.apm_request = self.request;
 //    self.model = [[NetworkModel alloc] init];
 //    self.model.request = self.request;
 //    self.model.startTime = [[NSDate date] timeIntervalSince1970];
@@ -259,9 +259,9 @@ didReceiveResponse:(NSURLResponse *)response {
 //        [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
 //        [self.client URLProtocol:self didFailWithError:error];
 //        [self.client URLProtocolDidFinishLoading:self];
-//        self.APM_data = data.mutableCopy;
-//        self.APM_response = response;
-//        self.APM_error = error;
+//        self.apm_data = data.mutableCopy;
+//        self.apm_response = response;
+//        self.apm_error = error;
 //        self.model.response = (NSHTTPURLResponse *)response;
 //        self.model.error = error.description;
 //        self.model.responseTime = [NSString stringWithFormat:@"%lld", (long long)([[NSDate date] timeIntervalSince1970] * 1000)];
@@ -272,22 +272,22 @@ didReceiveResponse:(NSURLResponse *)response {
 //- (void)stopLoading
 //{
 //    //获取请求方法
-////    NSString *requestMethod = self.APM_request.HTTPMethod;
+////    NSString *requestMethod = self.apm_request.HTTPMethod;
 ////    NSLog(@"请求方法：%@\n", requestMethod);
 ////
 ////    //获取请求头
-////    NSDictionary *headers = self.APM_request.allHTTPHeaderFields;
+////    NSDictionary *headers = self.apm_request.allHTTPHeaderFields;
 ////    NSLog(@"请求头：\n");
 ////    for (NSString *key in headers.allKeys) {
 ////        NSLog(@"%@ : %@", key, headers[key]);
 ////    }
-////    NSLog(@"%@", self.APM_request.description);
-////    NSLog(@"%@", self.APM_response.description);
-////    NSLog(@"%@", self.APM_error.description);
+////    NSLog(@"%@", self.apm_request.description);
+////    NSLog(@"%@", self.apm_response.description);
+////    NSLog(@"%@", self.apm_error.description);
 //    self.model.totalDuration = [NSString stringWithFormat:@"%fs",[[NSDate date] timeIntervalSince1970] - self.model.startTime];
 //    //获取请求结果
-////    NSString *string = [self responseJSONFromData:self.APM_data];
-//    self.model.data = self.APM_data;
+////    NSString *string = [self responseJSONFromData:self.apm_data];
+//    self.model.data = self.apm_data;
 //    [self.model insertToDB];
 ////    NSLog(@"请求结果：%@", string);
 //}

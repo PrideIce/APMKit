@@ -29,13 +29,13 @@ WCDB_PRIMARY_ASC_AUTO_INCREMENT(CrashModel, crashId)
 - (BOOL)insertToDB
 {
     self.isAutoIncrement = YES;
-    BOOL result = [[APMDBManger getDB] insertObject:self into:CrashTable];
+    BOOL result = [[APMDBManger defaultDB] insertObject:self into:CrashTable];
     return result;
 }
 
 + (NSArray *)getAllRecords
 {
-    NSArray *array = [[APMDBManger getDB] getObjectsOfClass:CrashModel.class
+    NSArray *array = [[APMDBManger defaultDB] getObjectsOfClass:CrashModel.class
                                                   fromTable:CrashTable
                                                     orderBy:CrashModel.timeStamp.operator*(-1).order()];
     return array;

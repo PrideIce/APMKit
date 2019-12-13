@@ -31,13 +31,13 @@ WCDB_PRIMARY_ASC_AUTO_INCREMENT(NetworkModel, recordId)
 - (BOOL)insertToDB
 {
     self.isAutoIncrement = YES;
-    BOOL result = [[APMDBManger getDB] insertObject:self into:NetworkTable];
+    BOOL result = [[APMDBManger defaultDB] insertObject:self into:NetworkTable];
     return result;
 }
 
 + (NSArray *)getAllRecords
 {
-    NSArray *array = [[APMDBManger getDB] getObjectsOfClass:NetworkModel.class
+    NSArray *array = [[APMDBManger defaultDB] getObjectsOfClass:NetworkModel.class
                                                   fromTable:NetworkTable
                                                     orderBy:NetworkModel.recordId.operator*(-1).order()];
     return array;

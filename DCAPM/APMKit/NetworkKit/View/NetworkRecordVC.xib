@@ -32,7 +32,7 @@
                     </connections>
                 </segmentedControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="sqq-wk-wek" customClass="NetworkRecordTableView">
-                    <rect key="frame" x="0.0" y="113" width="414" height="729"/>
+                    <rect key="frame" x="0.0" y="113" width="414" height="783"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
             </subviews>
@@ -40,7 +40,7 @@
             <constraints>
                 <constraint firstItem="pw5-wX-zCf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="60" id="0AR-L9-Huq"/>
                 <constraint firstItem="sqq-wk-wek" firstAttribute="top" secondItem="pw5-wX-zCf" secondAttribute="bottom" constant="10" id="2Gz-VS-TC0"/>
-                <constraint firstAttribute="bottom" secondItem="sqq-wk-wek" secondAttribute="bottom" constant="54" id="N3X-85-Wg9"/>
+                <constraint firstAttribute="bottom" secondItem="sqq-wk-wek" secondAttribute="bottom" id="N3X-85-Wg9"/>
                 <constraint firstAttribute="trailing" secondItem="sqq-wk-wek" secondAttribute="trailing" id="PV9-Xy-Puf"/>
                 <constraint firstItem="pw5-wX-zCf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="72" id="Shu-g5-WSl"/>
                 <constraint firstItem="sqq-wk-wek" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dPC-Ho-EEo"/>
