@@ -24,6 +24,7 @@ WCDB_SYNTHESIZE(NetworkModel, responseTime)
 WCDB_SYNTHESIZE(NetworkModel, totalDuration)
 WCDB_SYNTHESIZE(NetworkModel, data)
 WCDB_SYNTHESIZE(NetworkModel, error)
+WCDB_SYNTHESIZE(NetworkModel, requestDataLength)
 
 WCDB_PRIMARY_ASC_AUTO_INCREMENT(NetworkModel, recordId)
 

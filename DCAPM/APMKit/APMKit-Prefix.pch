@@ -25,5 +25,6 @@
 
 #import <Masonry/Masonry.h>
 #import "NSData+APM.h"
+#import "APMUtility.h"
 
 #endif /* APMPrefixHeader_pch */

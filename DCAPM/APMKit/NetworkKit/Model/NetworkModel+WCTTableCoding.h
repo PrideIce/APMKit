@@ -19,5 +19,6 @@ WCDB_PROPERTY(responseTime)
 WCDB_PROPERTY(totalDuration)
 WCDB_PROPERTY(data)
 WCDB_PROPERTY(error)
+WCDB_PROPERTY(requestDataLength)
 
 @end

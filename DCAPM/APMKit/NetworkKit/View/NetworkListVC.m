@@ -15,6 +15,7 @@
 
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *dataArray;
+@property (nonatomic,strong) UISegmentedControl *segControl;
 
 @end
 
@@ -24,7 +25,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"网络日志";
+//    self.title = @"网络日志";
+    self.navigationItem.titleView = self.segControl;
     self.view.backgroundColor = UIColor.whiteColor;
     
     [self initData];
@@ -64,6 +66,16 @@
         [_tableView registerNib:[UINib nibWithNibName:@"NetworkListCell" bundle:nil] forCellReuseIdentifier:@"NetworkListCell"];
     }
     return _tableView;
+}
+
+- (UISegmentedControl *)segControl
+{
+    if (_segControl == nil) {
+        _segControl = [[UISegmentedControl alloc] initWithItems:@[@"时间",@"大小"]];
+        _segControl.selectedSegmentIndex = 0;
+        [_segControl addTarget:self action:@selector(selectSegmentAction:) forControlEvents:UIControlEventValueChanged];
+    }
+    return _segControl;
 }
 
 #pragma mark - UITableViewDataSource
@@ -111,6 +123,17 @@
     NetworkRecordVC *vc = [[NetworkRecordVC alloc] init];
     vc.model = [self.dataArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - Action
+
+- (IBAction)selectSegmentAction:(UISegmentedControl *)sender
+{
+    if (sender.selectedSegmentIndex == 0) {
+        
+    } else {
+        
+    }
 }
 
 @end

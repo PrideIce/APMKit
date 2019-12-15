@@ -23,15 +23,7 @@
     
     NSArray *array = [NSArray arrayWithObject:@"there is only one objective in this arary,call index one, app will crash and throw an exception!"];
 //    NSLog(@"%@", [array objectAtIndex:1]);
-    
-    NSString *browseUrl = [NSString stringWithFormat:@"https://www.sojson.com/open/api/weather/json.shtml?city=%@", @"北京"];
-    NSString *gitHubUrl = @"https://api.github.com/search/users?q=language:objective-c&sort=followers&order=desc";
-    NSURLSession *session = [NSURLSession sharedSession];
-       NSURLSessionDataTask *task = [session dataTaskWithURL:[NSURL URLWithString:gitHubUrl] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-           NSLog(@"请求完成");
-       }];
-       [task resume];
-    
+        
     return YES;
 }
 

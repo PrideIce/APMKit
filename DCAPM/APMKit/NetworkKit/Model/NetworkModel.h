@@ -18,6 +18,7 @@
 @property (nonatomic, copy) NSString *totalDuration;
 @property (nonatomic, strong) NSData *data;
 @property (nonatomic, copy) NSString *error;
+@property (nonatomic, assign) NSInteger requestDataLength;
 
 #pragma mark - CRUD
 - (BOOL)insertToDB;

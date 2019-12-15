@@ -39,7 +39,8 @@
 {
     self.requestSetions = @[@"消息体",@"链接",@"请求头",@"请求行"];
     NSMutableArray *arr1 = [NSMutableArray array];
-    [arr1 addObject:[NetworkRecordEntry entryWithLeftInfo:@"数据大小"]];
+    NSString *requestLength = [APMUtility getFileSizeOfLength:_model.requestDataLength];
+    [arr1 addObject:[NetworkRecordEntry entryWithLeftInfo:@"数据大小" rightInfo:requestLength showEntrance:NO]];
     [arr1 addObject:[NetworkRecordEntry entryWithLeftInfo:_model.response.MIMEType]];
     
     NSMutableArray *arr2 = [NSMutableArray array];
@@ -51,10 +52,13 @@
     for (NSString *key in headers.allKeys) {
         [requestHeader appendFormat:@"%@ : %@\n", key, headers[key]];
     }
+    if (requestHeader.length > 2) {
+        [requestHeader deleteCharactersInRange:NSMakeRange(requestHeader.length - 2, 2)];
+    }
     [arr3 addObject:[NetworkRecordEntry entryWithLeftInfo:requestHeader]];
     
     NSMutableArray *arr4 = [NSMutableArray array];
-    NSString *lineStr = [NSString stringWithFormat:@"%@ %@ %@\n", _model.request.HTTPMethod, _model.request.URL.path, @"HTTP/1.1"];
+    NSString *lineStr = [NSString stringWithFormat:@"%@ %@ %@", _model.request.HTTPMethod, _model.request.URL.path, @"HTTP/1.1"];
     [arr4 addObject:[NetworkRecordEntry entryWithLeftInfo:lineStr]];
     self.requestRowsDict = @{@"消息体":arr1,
                              @"链接":arr2,
@@ -70,6 +74,9 @@
     NSMutableString *responseHeader = [NSMutableString string];
     for (NSString *key in headers.allKeys) {
         [responseHeader appendFormat:@"%@ : %@\n", key, headers[key]];
+    }
+    if (responseHeader.length > 2) {
+        [responseHeader deleteCharactersInRange:NSMakeRange(responseHeader.length - 2, 2)];
     }
     [response2 addObject:[NetworkRecordEntry entryWithLeftInfo:responseHeader]];
     

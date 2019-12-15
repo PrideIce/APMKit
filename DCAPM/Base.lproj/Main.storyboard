@@ -26,10 +26,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCF-3y-Vc7">
-                                <rect key="frame" x="192" y="433" width="31" height="30"/>
+                                <rect key="frame" x="191.5" y="433" width="31" height="30"/>
                                 <state key="normal" title="面板"/>
                                 <connections>
                                     <action selector="monitorAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ft6-j5-9JJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAp-l0-SA9">
+                                <rect key="frame" x="163" y="250" width="72" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="请求Demo"/>
+                                <connections>
+                                    <action selector="requestAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uDN-j0-tn1"/>
                                 </connections>
                             </button>
                         </subviews>

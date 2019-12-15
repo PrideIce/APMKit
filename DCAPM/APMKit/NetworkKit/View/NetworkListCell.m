@@ -38,33 +38,7 @@
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:model.startTime];
     self.timeLabel.text = [NSString stringWithFormat:@"[%ld] %@", (long)model.response.statusCode,[formatter stringFromDate:date]];
-    self.sizeLabel.text = [NSString stringWithFormat:@"↓ %@  ↑ %@", [self convertFileSize:model.data.length], [self convertFileSize:model.request.HTTPBody.length]];
+    self.sizeLabel.text = [NSString stringWithFormat:@"↓ %@  ↑ %@", [APMUtility getFileSizeOfLength:model.data.length], [APMUtility getFileSizeOfLength:model.requestDataLength]];
 }
-
-- (NSString *)convertFileSize:(long long)size
-{
-    long kb = 1024;
-    long mb = kb * 1024;
-    long gb = mb * 1024;
-    
-    if (size >= gb) {
-        return [NSString stringWithFormat:@"%.2fGB", (float)size / gb];
-    } else if (size >= mb) {
-        float f = (float)size / mb;
-        if (f > 100) {
-            return [NSString stringWithFormat:@"%.0fMB", f];
-        } else {
-            return [NSString stringWithFormat:@"%.2fMB", f];
-        }
-    } else if (size >= kb) {
-        float f = (float)size / kb;
-        if (f > 100) {
-            return [NSString stringWithFormat:@"%.0fKB", f];
-        } else {
-            return [NSString stringWithFormat:@"%.2fKB", f];
-        }
-    } else return [NSString stringWithFormat:@"%lldB", size];
-}
-
 
 @end
