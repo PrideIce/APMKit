@@ -19,12 +19,15 @@ WCDB_IMPLEMENTATION(NetworkModel)
 WCDB_SYNTHESIZE(NetworkModel, recordId)
 WCDB_SYNTHESIZE(NetworkModel, request)
 WCDB_SYNTHESIZE(NetworkModel, response)
+WCDB_SYNTHESIZE(NetworkModel, url)
+WCDB_SYNTHESIZE(NetworkModel, statusCode)
 WCDB_SYNTHESIZE(NetworkModel, startTime)
 WCDB_SYNTHESIZE(NetworkModel, responseTime)
 WCDB_SYNTHESIZE(NetworkModel, totalDuration)
 WCDB_SYNTHESIZE(NetworkModel, data)
 WCDB_SYNTHESIZE(NetworkModel, error)
 WCDB_SYNTHESIZE(NetworkModel, requestDataLength)
+WCDB_SYNTHESIZE(NetworkModel, totalDataLength)
 
 WCDB_PRIMARY_ASC_AUTO_INCREMENT(NetworkModel, recordId)
 
@@ -39,8 +42,40 @@ WCDB_PRIMARY_ASC_AUTO_INCREMENT(NetworkModel, recordId)
 + (NSArray *)getAllRecords
 {
     NSArray *array = [[APMDBManger defaultDB] getObjectsOfClass:NetworkModel.class
-                                                  fromTable:NetworkTable
-                                                    orderBy:NetworkModel.recordId.operator*(-1).order()];
+                                                      fromTable:NetworkTable
+                                                        orderBy:NetworkModel.recordId.order(WCTOrderedDescending)];
+    return array;
+}
+
++ (NSArray *)getAllRecordsBySizeOrder
+{
+    NSArray *array = [[APMDBManger defaultDB] getObjectsOfClass:NetworkModel.class
+                                                      fromTable:NetworkTable
+                                                        orderBy:NetworkModel.totalDataLength.order(WCTOrderedAscending)];
+    return array;
+}
+
++ (NSArray *)getAllStatusCode
+{
+    NSArray *array = [[APMDBManger defaultDB] getOneDistinctColumnOnResult:NetworkModel.statusCode fromTable:NetworkTable];
+    return array;
+}
+
++ (NSArray *)getRecordsWithStatusCode:(NSInteger)statusCode
+{
+    NSArray *array = [[APMDBManger defaultDB] getObjectsOfClass:NetworkModel.class
+                                                      fromTable:NetworkTable
+                                                        where:NetworkModel.statusCode == statusCode];
+    return array;
+}
+
++ (NSArray *)getRecordsContainsDomain:(NSString *)domain
+{
+    NSString *likeQuery = [@"%" stringByAppendingString:domain];
+    likeQuery = [likeQuery stringByAppendingString:@"%"];
+    NSArray *array = [[APMDBManger defaultDB] getObjectsOfClass:NetworkModel.class
+                                                      fromTable:NetworkTable
+                                                          where:NetworkModel.url.like(likeQuery)];
     return array;
 }
 

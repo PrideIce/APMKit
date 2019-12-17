@@ -55,23 +55,24 @@
     
     [self.view addSubview:self.crashBtn];
     [self.crashBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@(60));
+        make.width.equalTo(@(85));
         make.height.equalTo(@(30));
-        make.center.equalTo(self.view);
+        make.top.equalTo(self.view).offset(120);
+        make.centerX.equalTo(self.view);
     }];
     
     [self.view addSubview:self.networkBtn];
     [self.networkBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@(60));
+        make.width.equalTo(@(85));
         make.height.equalTo(@(30));
+        make.top.equalTo(self.crashBtn.mas_bottom).offset(40);
         make.centerX.equalTo(self.view);
-        make.top.equalTo(self.crashBtn.mas_bottom).offset(30);
     }];
     
-    CGFloat bottomHeight = -30 - APMSafeBottomHeight;
+    CGFloat bottomHeight = -50 - APMSafeBottomHeight;
     [self.view addSubview:self.exitBtn];
     [self.exitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@(60));
+        make.width.equalTo(@(85));
         make.height.equalTo(@(30));
         make.centerX.equalTo(self.view);
         make.bottom.equalTo(self.view).offset(bottomHeight);
@@ -121,9 +122,9 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitleColor:APMFontDefaultColor forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:14];
-        [button setTitle:@"Crash" forState:UIControlStateNormal];
+        [button setTitle:@"崩溃监控" forState:UIControlStateNormal];
         [button addTarget:self action:@selector(crashAction:) forControlEvents:UIControlEventTouchUpInside];
-        button.layer.borderWidth = 1;
+        button.layer.borderWidth = 1.5;
         button.layer.cornerRadius = 5;
         button.layer.borderColor = APMFontDefaultColor.CGColor;
         _crashBtn = button;
@@ -137,9 +138,9 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitleColor:APMFontDefaultColor forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:14];
-        [button setTitle:@"Network" forState:UIControlStateNormal];
+        [button setTitle:@"网络监控" forState:UIControlStateNormal];
         [button addTarget:self action:@selector(networkAction:) forControlEvents:UIControlEventTouchUpInside];
-        button.layer.borderWidth = 1;
+        button.layer.borderWidth = 1.5;
         button.layer.cornerRadius = 5;
         button.layer.borderColor = APMFontDefaultColor.CGColor;
         _networkBtn = button;
@@ -151,13 +152,13 @@
 {
     if (!_exitBtn) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setTitleColor:APMFontDefaultColor forState:UIControlStateNormal];
+        [button setTitleColor:UIColor.systemPinkColor forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:14];
-        [button setTitle:@"Exit" forState:UIControlStateNormal];
+        [button setTitle:@"退 出" forState:UIControlStateNormal];
         [button addTarget:self action:@selector(exitAction:) forControlEvents:UIControlEventTouchUpInside];
-        button.layer.borderWidth = 1;
+        button.layer.borderWidth = 1.5;
         button.layer.cornerRadius = 5;
-        button.layer.borderColor = APMFontDefaultColor.CGColor;
+        button.layer.borderColor = UIColor.systemPinkColor.CGColor;
         _exitBtn = button;
     }
     return _exitBtn;

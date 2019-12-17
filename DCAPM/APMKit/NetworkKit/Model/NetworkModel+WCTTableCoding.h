@@ -14,11 +14,14 @@
 WCDB_PROPERTY(recordId)
 WCDB_PROPERTY(request)
 WCDB_PROPERTY(response)
+WCDB_PROPERTY(url)
+WCDB_PROPERTY(statusCode)
 WCDB_PROPERTY(startTime)
 WCDB_PROPERTY(responseTime)
 WCDB_PROPERTY(totalDuration)
 WCDB_PROPERTY(data)
 WCDB_PROPERTY(error)
 WCDB_PROPERTY(requestDataLength)
+WCDB_PROPERTY(totalDataLength)
 
 @end

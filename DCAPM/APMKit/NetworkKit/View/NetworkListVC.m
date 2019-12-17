@@ -16,6 +16,8 @@
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) NSArray *dataArray;
 @property (nonatomic,strong) UISegmentedControl *segControl;
+@property (nonatomic,strong) UIButton *filterBtn;
+@property (nonatomic,strong) UILabel *emptyLabel;
 
 @end
 
@@ -29,27 +31,22 @@
     self.navigationItem.titleView = self.segControl;
     self.view.backgroundColor = UIColor.whiteColor;
     
-    [self initData];
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:self.filterBtn];
+    self.navigationItem.rightBarButtonItem = buttonItem;
+    
+    [self.view addSubview:self.tableView];
+    self.dataArray = [NetworkModel getAllRecords];
+    [self reloadTableView];
 }
 
-- (void)initData
+- (void)reloadTableView
 {
-    NSArray *crashArray = [NetworkModel getAllRecords];
-    self.dataArray = crashArray ?: @[];
     if (self.dataArray.count > 0) {
-        [self.view addSubview:self.tableView];
-        [self.tableView reloadData];
+        self.emptyLabel.hidden = YES;
     } else {
-        UILabel *emptyLabel = [[UILabel alloc] init];
-        emptyLabel.textColor = APMFontDefaultColor;
-        emptyLabel.font = [UIFont systemFontOfSize:18];
-        emptyLabel.numberOfLines = 0;
-        [self.view addSubview:emptyLabel];
-        [emptyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.centerY.equalTo(self.view);
-        }];
-        emptyLabel.text = @"当前没有记录";
+        self.emptyLabel.hidden = NO;
     }
+    [self.tableView reloadData];
 }
 
 #pragma mark - Getter
@@ -76,6 +73,38 @@
         [_segControl addTarget:self action:@selector(selectSegmentAction:) forControlEvents:UIControlEventValueChanged];
     }
     return _segControl;
+}
+
+- (UIButton *)filterBtn
+{
+    if (_filterBtn == nil) {
+        _filterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _filterBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [_filterBtn setImage:[UIImage imageNamed:@"filter"] forState:UIControlStateNormal];
+        [_filterBtn setImage:[UIImage imageNamed:@"filter"] forState:UIControlStateHighlighted];
+        [_filterBtn setTitleColor:UIColor.grayColor forState:UIControlStateNormal];
+        [_filterBtn addTarget:self action:@selector(filterAciton) forControlEvents:UIControlEventTouchUpInside];
+        _filterBtn.imageEdgeInsets = UIEdgeInsetsMake(5, 50, 5, -25);
+        [_filterBtn sizeToFit];
+    }
+    return _filterBtn;
+}
+
+- (UILabel *)emptyLabel
+{
+    if (_emptyLabel == nil) {
+        UILabel *emptyLabel = [[UILabel alloc] init];
+        emptyLabel.textColor = APMFontDefaultColor;
+        emptyLabel.font = [UIFont systemFontOfSize:16];
+        emptyLabel.numberOfLines = 0;
+        [self.view addSubview:emptyLabel];
+        [emptyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.centerY.equalTo(self.view);
+        }];
+        emptyLabel.text = @"当前没有记录";
+        _emptyLabel = emptyLabel;
+    }
+    return _emptyLabel;
 }
 
 #pragma mark - UITableViewDataSource
@@ -129,11 +158,74 @@
 
 - (IBAction)selectSegmentAction:(UISegmentedControl *)sender
 {
-    if (sender.selectedSegmentIndex == 0) {
-        
+    if (self.segControl.selectedSegmentIndex == 0) {
+        self.dataArray = [NetworkModel getAllRecords];
     } else {
-        
+        self.dataArray = [NetworkModel getAllRecordsBySizeOrder];
     }
+    [self reloadTableView];
+}
+
+- (void)filterAciton
+{
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil
+                                                                     message:@"选择过滤条件"
+                                                              preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"域名" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self popDomainTextField];
+    }];
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"状态码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self popStatusCodeTextField];
+        
+    }];
+    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alertVC addAction:action1];
+    [alertVC addAction:action2];
+    [alertVC addAction:action3];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+
+- (void)popDomainTextField
+{
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil
+                                                                     message:@"域名过滤"
+                                                              preferredStyle:UIAlertControllerStyleAlert];
+    [alertVC addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"请输入部分域名，例如baidu";
+    }];
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"查询" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        for (UITextField *textField in alertVC.textFields) {
+            if (textField.text.length > 0) {
+                self.dataArray = [NetworkModel getRecordsContainsDomain:textField.text];
+                [self reloadTableView];
+            }
+        }
+    }];
+    [alertVC addAction:action1];
+    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alertVC addAction:action3];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+
+- (void)popStatusCodeTextField
+{
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil
+                                                                     message:@"请选择状态码"
+                                                              preferredStyle:UIAlertControllerStyleActionSheet];
+   NSArray *statusCodeArray = [NetworkModel getAllStatusCode];
+    for (NSNumber *statusCode in statusCodeArray) {
+        if ([statusCode isKindOfClass:[NSNull class]]) {
+            continue;
+        }
+        UIAlertAction *action = [UIAlertAction actionWithTitle:statusCode.stringValue style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            self.dataArray = [NetworkModel getRecordsWithStatusCode:statusCode.integerValue];
+            [self reloadTableView];
+        }];
+        [alertVC addAction:action];
+    }
+    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alertVC addAction:action3];
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 @end

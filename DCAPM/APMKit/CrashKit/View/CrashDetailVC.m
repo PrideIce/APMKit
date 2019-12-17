@@ -27,7 +27,7 @@
     NSString *name = self.model.name ?: @"";
     NSString *time = self.model.timeDate ?: @"";
     NSString *expStack = self.model.stack ?: @"";
-    NSString *crashInfo = [NSString stringWithFormat:@"=============Crash Report=============\nTime: %@\nName: %@\nReason: %@\nCallStackSymbols:\n%@\n\n\n",time,name,reason,expStack];
+    NSString *crashInfo = [NSString stringWithFormat:@"=============Crash Report=============\nTime: %@\nName: %@\nReason: %@\n\nCallStackSymbols:\n%@\n\n\n",time,name,reason,expStack];
     self.textview.text = crashInfo;
     [self.view addSubview:self.textview];
     UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGesture:)];

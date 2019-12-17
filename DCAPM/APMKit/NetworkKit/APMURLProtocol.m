@@ -105,10 +105,15 @@ static NSString *const APMHTTP = @"APMHTTP";//为了避免canInitWithRequest和c
 
 - (void)stopLoading {
    [self.connection cancel];
+    
+    self.model.url = self.request.URL.absoluteString;
     self.model.responseTime = [NSString stringWithFormat:@"%lld", (long long)([[NSDate date] timeIntervalSince1970] * 1000)];
     self.model.data = self.apm_data;
     self.model.response = (NSHTTPURLResponse *)self.apm_response;
+    self.model.statusCode = self.model.response.statusCode;
     self.model.requestDataLength = [self dgm_getHeadersLengthWithCookie] + [self dgm_getBodyLength];
+    self.model.totalDataLength = self.model.requestDataLength + self.model.data.length;
+    
     [self.model insertToDB];
 }
 

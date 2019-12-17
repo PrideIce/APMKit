@@ -25,7 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"崩溃列表";
+    self.title = @"崩溃记录";
     self.view.backgroundColor = UIColor.whiteColor;
     
     [self initData];
@@ -80,7 +80,8 @@
     }
     
     CrashModel *model = [self.dataArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", model.timeDate, model.name];
+    cell.textLabel.text = model.name;
+    cell.detailTextLabel.text = model.timeDate;
     return cell;
 }
 
