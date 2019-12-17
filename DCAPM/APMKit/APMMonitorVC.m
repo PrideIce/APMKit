@@ -11,6 +11,7 @@
 #import "UIView+APM.h"
 #import "CrashListVC.h"
 #import "NetworkListVC.h"
+#import "PerformanceKit.h"
 
 @interface APMMonitorVC ()
 
@@ -210,7 +211,7 @@
         [button setTitleColor:APMFontDefaultColor forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:16];
         [button setTitle:@"性能监控" forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(networkAction:) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(performainceAciton:) forControlEvents:UIControlEventTouchUpInside];
         button.layer.borderWidth = 1.5;
         button.layer.cornerRadius = 8;
         button.layer.borderColor = APMFontDefaultColor.CGColor;
@@ -279,6 +280,11 @@
 {
     NetworkListVC *vc = [[NetworkListVC alloc] init];
     [APMMonitorVC.shared.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)performainceAciton:(id)sender
+{
+    [PerformanceKit toggleWith:APMTypeAll];
 }
 
 - (void)exitAction:(id)sender

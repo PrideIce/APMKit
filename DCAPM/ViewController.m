@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "CrashListVC.h"
 #import "APMMonitorVC.h"
+#import "PerformanceKit.h"
 
 @interface ViewController ()
 
@@ -37,6 +38,7 @@
 
 - (IBAction)requestAction:(id)sender {
     [self postRequest];
+//    [PerformanceKit showWith:APMTypeAll];
 }
 
 - (void)getRequest
