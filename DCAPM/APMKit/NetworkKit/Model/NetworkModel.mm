@@ -51,7 +51,7 @@ WCDB_PRIMARY_ASC_AUTO_INCREMENT(NetworkModel, recordId)
 {
     NSArray *array = [[APMDBManger defaultDB] getObjectsOfClass:NetworkModel.class
                                                       fromTable:NetworkTable
-                                                        orderBy:NetworkModel.totalDataLength.order(WCTOrderedAscending)];
+                                                        orderBy:NetworkModel.totalDataLength.order(WCTOrderedDescending)];
     return array;
 }
 

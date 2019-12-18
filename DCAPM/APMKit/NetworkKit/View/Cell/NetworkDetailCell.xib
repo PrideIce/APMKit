@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NetworkDetailCellID" rowHeight="82" id="KGk-i7-Jjw" customClass="NetworkDetailCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhM-k1-64g">
+                        <rect key="frame" x="15" y="10" width="35.5" height="62"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXp-kL-Rz7">
+                        <rect key="frame" x="270" y="10" width="40" height="62"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="DqX-ke-oHy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="lhM-k1-64g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="EoO-hD-2gy"/>
+                    <constraint firstAttribute="bottom" secondItem="lhM-k1-64g" secondAttribute="bottom" constant="10" id="Jap-Hy-6Kz"/>
+                    <constraint firstItem="mXp-kL-Rz7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Oun-kN-Fpd"/>
+                    <constraint firstAttribute="trailing" secondItem="mXp-kL-Rz7" secondAttribute="trailing" constant="10" id="RAx-vz-tnq"/>
+                    <constraint firstAttribute="bottom" secondItem="mXp-kL-Rz7" secondAttribute="bottom" constant="10" id="Rax-Ff-MKR"/>
+                    <constraint firstItem="lhM-k1-64g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="n6W-FH-gpH"/>
+                    <constraint firstItem="mXp-kL-Rz7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lhM-k1-64g" secondAttribute="trailing" constant="5" id="wjm-dw-3BN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="detailLabel" destination="mXp-kL-Rz7" id="Ylv-6P-p1d"/>
+                <outlet property="textLabel" destination="lhM-k1-64g" id="jgW-xW-Yto"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="162.72321428571428"/>
+        </tableViewCell>
+    </objects>
+</document>

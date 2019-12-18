@@ -21,6 +21,8 @@
 		F81617A723A8F10100C0BE00 /* APMCpuMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = F816179D23A8F10100C0BE00 /* APMCpuMonitor.m */; };
 		F81617A823A8F10100C0BE00 /* APMFPSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = F816179E23A8F10100C0BE00 /* APMFPSMonitor.m */; };
 		F81617A923A8F10100C0BE00 /* APMMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = F816179F23A8F10100C0BE00 /* APMMonitor.m */; };
+		F816180B23A9B22500C0BE00 /* NetworkDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F816180923A9B22500C0BE00 /* NetworkDetailCell.m */; };
+		F816180C23A9B22500C0BE00 /* NetworkDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F816180A23A9B22500C0BE00 /* NetworkDetailCell.xib */; };
 		F8314170239F78CA005FFF64 /* NetworkModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = F831416D239F78CA005FFF64 /* NetworkModel.mm */; };
 		F858F3F12393911300057DB4 /* CrashDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F858F3F02393911300057DB4 /* CrashDetailVC.m */; };
 		F858F3F523A12B2300057DB4 /* NetworkListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F858F3F323A12B2300057DB4 /* NetworkListCell.m */; };
@@ -72,6 +74,9 @@
 		F81617A023A8F10100C0BE00 /* APMTempVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APMTempVC.h; sourceTree = "<group>"; };
 		F81617A123A8F10100C0BE00 /* APMConsoleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APMConsoleLabel.h; sourceTree = "<group>"; };
 		F81617A223A8F10100C0BE00 /* PerformanceKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformanceKit.h; sourceTree = "<group>"; };
+		F816180823A9B22500C0BE00 /* NetworkDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkDetailCell.h; sourceTree = "<group>"; };
+		F816180923A9B22500C0BE00 /* NetworkDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkDetailCell.m; sourceTree = "<group>"; };
+		F816180A23A9B22500C0BE00 /* NetworkDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkDetailCell.xib; sourceTree = "<group>"; };
 		F831416D239F78CA005FFF64 /* NetworkModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NetworkModel.mm; sourceTree = "<group>"; };
 		F831416E239F78CA005FFF64 /* NetworkModel+WCTTableCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NetworkModel+WCTTableCoding.h"; sourceTree = "<group>"; };
 		F831416F239F78CA005FFF64 /* NetworkModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkModel.h; sourceTree = "<group>"; };
@@ -199,6 +204,19 @@
 			path = PerformanceKit;
 			sourceTree = "<group>";
 		};
+		F816180723A9B1EF00C0BE00 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F858F3F223A12B2300057DB4 /* NetworkListCell.h */,
+				F858F3F323A12B2300057DB4 /* NetworkListCell.m */,
+				F858F3F423A12B2300057DB4 /* NetworkListCell.xib */,
+				F816180823A9B22500C0BE00 /* NetworkDetailCell.h */,
+				F816180923A9B22500C0BE00 /* NetworkDetailCell.m */,
+				F816180A23A9B22500C0BE00 /* NetworkDetailCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		F8548810239F69E400B20321 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,15 +325,13 @@
 		F8EBA3A4239FB77200A4B0E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F816180723A9B1EF00C0BE00 /* Cell */,
 				F805013B23A22DD2005796B8 /* TableView */,
 				F8EBA3A5239FB79100A4B0E6 /* NetworkListVC.h */,
 				F8EBA3A6239FB79100A4B0E6 /* NetworkListVC.m */,
 				F805013623A22C1F005796B8 /* NetworkRecordVC.h */,
 				F805013723A22C1F005796B8 /* NetworkRecordVC.m */,
 				F805013823A22C1F005796B8 /* NetworkRecordVC.xib */,
-				F858F3F223A12B2300057DB4 /* NetworkListCell.h */,
-				F858F3F323A12B2300057DB4 /* NetworkListCell.m */,
-				F858F3F423A12B2300057DB4 /* NetworkListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -379,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F805013A23A22C1F005796B8 /* NetworkRecordVC.xib in Resources */,
+				F816180C23A9B22500C0BE00 /* NetworkDetailCell.xib in Resources */,
 				F89110812392601300A94A7C /* LaunchScreen.storyboard in Resources */,
 				F891107E2392601300A94A7C /* Assets.xcassets in Resources */,
 				F858F3F623A12B2300057DB4 /* NetworkListCell.xib in Resources */,
@@ -422,6 +439,7 @@
 				F81617A923A8F10100C0BE00 /* APMMonitor.m in Sources */,
 				F81617A823A8F10100C0BE00 /* APMFPSMonitor.m in Sources */,
 				F805013E23A23023005796B8 /* NetworkRecordTableView.m in Sources */,
+				F816180B23A9B22500C0BE00 /* NetworkDetailCell.m in Sources */,
 				F80F6CEB239F47DC006B3DF6 /* APMURLProtocol.m in Sources */,
 				F8314170239F78CA005FFF64 /* NetworkModel.mm in Sources */,
 				F81617A523A8F10100C0BE00 /* PerformanceKit.m in Sources */,

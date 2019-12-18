@@ -7,6 +7,7 @@
 //
 
 #import "NetworkRecordTableView.h"
+#import "NetworkDetailCell.h"
 
 @implementation NetworkRecordEntry
 
@@ -38,11 +39,7 @@
 {
     self = [super initWithFrame:frame style:style];
     if (self) {
-        self.dataSource = self;
-        self.delegate = self;
-        self.estimatedRowHeight = 100;
-        self.rowHeight = UITableViewAutomaticDimension;
-        self.backgroundColor = APMRGB(243, 244, 246);
+        [self initTableView];
     }
     return self;
 }
@@ -51,13 +48,20 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        self.dataSource = self;
-        self.delegate = self;
-        self.estimatedRowHeight = 100;
-        self.rowHeight = UITableViewAutomaticDimension;
-        self.backgroundColor = APMRGB(243, 244, 246);
+        [self initTableView];
     }
     return self;
+}
+
+- (void)initTableView
+{
+    self.dataSource = self;
+    self.delegate = self;
+    self.estimatedRowHeight = 100;
+    self.rowHeight = UITableViewAutomaticDimension;
+    self.backgroundColor = APMRGB(243, 244, 246);
+    
+    [self registerNib:[UINib nibWithNibName:@"NetworkDetailCell" bundle:nil] forCellReuseIdentifier:@"NetworkDetailCellID"];
 }
 
 #pragma mark — UITableViewDataSource
@@ -76,19 +80,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"cellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-        cell.textLabel.numberOfLines = 0;
-    }
+    static NSString *cellIdentifier = @"NetworkDetailCellID";
+    NetworkDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     NSString *sectionTitle = [self.setions objectAtIndex:indexPath.section];
     NSArray *rows = [_rowsDict objectForKey:sectionTitle];
     NetworkRecordEntry *entry = [rows objectAtIndex:indexPath.row];
     
     cell.textLabel.text = entry.leftInfo;
-    cell.detailTextLabel.text = entry.rightInfo;
+    cell.detailLabel.text = entry.rightInfo;
     cell.accessoryType = entry.showEntrance ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
     return cell;
 }

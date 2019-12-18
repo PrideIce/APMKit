@@ -13,7 +13,7 @@
 NSString *APMCrashRecord = @"APMCrashRecord";
 static BOOL Crashed = NO;
 
-void UncaughtExceptionHandler(NSException *exception) {
+void APM_UncaughtExceptionHandler(NSException *exception) {
     if (Crashed) return;
     Crashed = YES;
     NSString *reason = [exception reason];
@@ -36,7 +36,7 @@ void UncaughtExceptionHandler(NSException *exception) {
 }
 
 //Signal类型的崩溃
-void DC_SignalExceptionHandler(int signal){
+void APM_SignalExceptionHandler(int signal){
     
     if (Crashed) return;
     Crashed = YES;
@@ -115,17 +115,17 @@ void DC_SignalExceptionHandler(int signal){
 {
     [CrashKit setDefaultHandler];
     
-    signal(SIGABRT, DC_SignalExceptionHandler);
-    signal(SIGILL, DC_SignalExceptionHandler);
-    signal(SIGSEGV, DC_SignalExceptionHandler);
-    signal(SIGFPE, DC_SignalExceptionHandler);
-    signal(SIGBUS, DC_SignalExceptionHandler);
-    signal(SIGPIPE, DC_SignalExceptionHandler);
+    signal(SIGABRT, APM_SignalExceptionHandler);
+    signal(SIGILL, APM_SignalExceptionHandler);
+    signal(SIGSEGV, APM_SignalExceptionHandler);
+    signal(SIGFPE, APM_SignalExceptionHandler);
+    signal(SIGBUS, APM_SignalExceptionHandler);
+    signal(SIGPIPE, APM_SignalExceptionHandler);
 }
    
 + (void)setDefaultHandler
 {
-     NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
+     NSSetUncaughtExceptionHandler(&APM_UncaughtExceptionHandler);
 }
    
 + (NSUncaughtExceptionHandler *)getHandler

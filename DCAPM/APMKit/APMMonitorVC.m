@@ -55,7 +55,7 @@
 {
     [super viewDidLoad];
     
-    self.title = @"移动端监控系统1.0";
+    self.title = @"移动端监控系统";
     self.view.backgroundColor = UIColor.whiteColor;
     
     CGFloat btnWidth = 85;
@@ -257,7 +257,7 @@
     if (!_exitBtn) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitleColor:UIColor.systemPinkColor forState:UIControlStateNormal];
-        button.titleLabel.font = [UIFont systemFontOfSize:14];
+        button.titleLabel.font = [UIFont systemFontOfSize:16];
         [button setTitle:@"退 出" forState:UIControlStateNormal];
         [button addTarget:self action:@selector(exitAction:) forControlEvents:UIControlEventTouchUpInside];
         button.layer.borderWidth = 1.5;

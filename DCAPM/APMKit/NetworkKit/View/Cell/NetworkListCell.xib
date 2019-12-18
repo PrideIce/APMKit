@@ -41,18 +41,28 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LlY-1n-8EV">
+                        <rect key="frame" x="15" y="111" width="305" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="eOZ-5P-JoZ"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="JiI-TB-ZFM" firstAttribute="leading" secondItem="EYr-Bp-rvk" secondAttribute="leading" id="5Ub-xq-nEV"/>
                     <constraint firstAttribute="trailing" secondItem="EYr-Bp-rvk" secondAttribute="trailing" constant="10" id="Gz6-P6-gMh"/>
                     <constraint firstItem="YKq-w0-mQ1" firstAttribute="leading" secondItem="EYr-Bp-rvk" secondAttribute="leading" id="Hqq-Vg-y7S"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YKq-w0-mQ1" secondAttribute="bottom" constant="10" id="ID4-jn-AW5"/>
+                    <constraint firstAttribute="bottom" secondItem="LlY-1n-8EV" secondAttribute="bottom" id="IoZ-Id-LTL"/>
+                    <constraint firstAttribute="trailing" secondItem="LlY-1n-8EV" secondAttribute="trailing" id="NrO-QD-tgl"/>
                     <constraint firstItem="JiI-TB-ZFM" firstAttribute="top" secondItem="EYr-Bp-rvk" secondAttribute="bottom" constant="8" id="W9L-YG-Nb1"/>
                     <constraint firstItem="EYr-Bp-rvk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="azk-iV-BXu"/>
                     <constraint firstItem="EYr-Bp-rvk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="dtX-fK-Bg4"/>
                     <constraint firstItem="YKq-w0-mQ1" firstAttribute="top" secondItem="hwx-vH-uYJ" secondAttribute="bottom" constant="5" id="j03-gt-dQK"/>
                     <constraint firstItem="hwx-vH-uYJ" firstAttribute="top" secondItem="JiI-TB-ZFM" secondAttribute="bottom" constant="8" id="u5C-mI-fQ7"/>
                     <constraint firstItem="hwx-vH-uYJ" firstAttribute="leading" secondItem="EYr-Bp-rvk" secondAttribute="leading" id="wSE-K0-j5M"/>
+                    <constraint firstItem="LlY-1n-8EV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="wbE-Vf-S6P"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -61,7 +71,7 @@
                 <outlet property="typeLabel" destination="JiI-TB-ZFM" id="EVh-aP-jn6"/>
                 <outlet property="urlLabel" destination="EYr-Bp-rvk" id="Xwf-lE-A3L"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="147.32142857142856"/>
+            <point key="canvasLocation" x="137.68115942028987" y="145.98214285714286"/>
         </tableViewCell>
     </objects>
 </document>
