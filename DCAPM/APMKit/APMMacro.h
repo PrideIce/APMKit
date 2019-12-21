@@ -1,16 +1,13 @@
 //
-//  APMPrefixHeader.pch
+//  APMMacro.h
 //  DCAPM
 //
-//  Created by 陈逸辰 on 2019/12/3.
+//  Created by 陈逸辰 on 2019/12/21.
 //  Copyright © 2019 陈逸辰. All rights reserved.
 //
 
-#ifndef APMPrefixHeader_pch
-#define APMPrefixHeader_pch
-
-// Include any system framework and library headers here that should be included in all compilation units.
-// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifndef APMMacro_h
+#define APMMacro_h
 
 #define APMRGB(r, g, b)                         [UIColor colorWithRed:r/255.f green:g/255.f blue:b/255.f alpha:1.f]
 #define APMFontDefaultColor                     APMRGB(37, 148, 255)
@@ -27,4 +24,4 @@
 #import "NSData+APM.h"
 #import "APMUtility.h"
 
-#endif /* APMPrefixHeader_pch */
+#endif /* APMMacro_h */

@@ -8,6 +8,7 @@
 
 #import "NetworkRecordTableView.h"
 #import "NetworkDetailCell.h"
+#import "APMMacro.h"
 
 @implementation NetworkRecordEntry
 

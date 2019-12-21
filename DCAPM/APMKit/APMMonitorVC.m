@@ -12,6 +12,7 @@
 #import "CrashListVC.h"
 #import "NetworkListVC.h"
 #import "PerformanceKit.h"
+#import "APMMacro.h"
 
 @interface APMMonitorVC ()
 

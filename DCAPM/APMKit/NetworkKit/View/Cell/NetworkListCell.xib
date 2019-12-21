@@ -42,8 +42,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LlY-1n-8EV">
-                        <rect key="frame" x="15" y="111" width="305" height="1"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="10" y="111" width="310" height="1"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="eOZ-5P-JoZ"/>
                         </constraints>
@@ -62,7 +62,7 @@
                     <constraint firstItem="YKq-w0-mQ1" firstAttribute="top" secondItem="hwx-vH-uYJ" secondAttribute="bottom" constant="5" id="j03-gt-dQK"/>
                     <constraint firstItem="hwx-vH-uYJ" firstAttribute="top" secondItem="JiI-TB-ZFM" secondAttribute="bottom" constant="8" id="u5C-mI-fQ7"/>
                     <constraint firstItem="hwx-vH-uYJ" firstAttribute="leading" secondItem="EYr-Bp-rvk" secondAttribute="leading" id="wSE-K0-j5M"/>
-                    <constraint firstItem="LlY-1n-8EV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="wbE-Vf-S6P"/>
+                    <constraint firstItem="LlY-1n-8EV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="wbE-Vf-S6P"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

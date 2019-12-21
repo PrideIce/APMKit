@@ -7,6 +7,7 @@
 //
 
 #import "CrashDetailVC.h"
+#import "APMMacro.h"
 
 @interface CrashDetailVC ()
 

@@ -8,6 +8,7 @@
 
 #import "NetworkRecordVC.h"
 #import "NetworkRecordTableView.h"
+#import "APMMacro.h"
 
 @interface NetworkRecordVC ()
 

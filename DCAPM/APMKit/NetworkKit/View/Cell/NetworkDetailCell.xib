@@ -18,12 +18,15 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhM-k1-64g">
                         <rect key="frame" x="15" y="10" width="35.5" height="62"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="G5E-4U-wzN"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXp-kL-Rz7">
-                        <rect key="frame" x="270" y="10" width="40" height="62"/>
+                        <rect key="frame" x="270" y="34" width="40" height="14.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="DqX-ke-oHy"/>
                         </constraints>
@@ -34,10 +37,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="lhM-k1-64g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="EoO-hD-2gy"/>
+                    <constraint firstItem="mXp-kL-Rz7" firstAttribute="centerY" secondItem="lhM-k1-64g" secondAttribute="centerY" id="FiJ-3x-ve8"/>
                     <constraint firstAttribute="bottom" secondItem="lhM-k1-64g" secondAttribute="bottom" constant="10" id="Jap-Hy-6Kz"/>
-                    <constraint firstItem="mXp-kL-Rz7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Oun-kN-Fpd"/>
                     <constraint firstAttribute="trailing" secondItem="mXp-kL-Rz7" secondAttribute="trailing" constant="10" id="RAx-vz-tnq"/>
-                    <constraint firstAttribute="bottom" secondItem="mXp-kL-Rz7" secondAttribute="bottom" constant="10" id="Rax-Ff-MKR"/>
                     <constraint firstItem="lhM-k1-64g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="n6W-FH-gpH"/>
                     <constraint firstItem="mXp-kL-Rz7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lhM-k1-64g" secondAttribute="trailing" constant="5" id="wjm-dw-3BN"/>
                 </constraints>

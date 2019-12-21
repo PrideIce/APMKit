@@ -11,6 +11,7 @@
 #import "APMMemoryMonitor.h"
 #import "APMConsoleLabel.h"
 #import "APMTempVC.h"
+#import "APMMacro.h"
 
 static NSInteger const kDebugLabelWidth = 70;
 static NSInteger const kDebugLabelHeight = 20;

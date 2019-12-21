@@ -10,6 +10,7 @@
 #import "CrashKit.h"
 #import "CrashDetailVC.h"
 #import "CrashModel.h"
+#import "APMMacro.h"
 
 @interface CrashListVC () <UITableViewDelegate,UITableViewDataSource>
 

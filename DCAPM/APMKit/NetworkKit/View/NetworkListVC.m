@@ -10,6 +10,7 @@
 #import "NetworkModel.h"
 #import "NetworkRecordVC.h"
 #import "NetworkListCell.h"
+#import "APMMacro.h"
 
 @interface NetworkListVC () <UITableViewDelegate,UITableViewDataSource>
 
@@ -56,6 +57,7 @@
     if (_tableView == nil) {
         _tableView = [[UITableView alloc ] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
         _tableView.backgroundColor = UIColor.whiteColor;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.estimatedRowHeight = 130;
@@ -80,9 +82,11 @@
     if (_filterBtn == nil) {
         _filterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _filterBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [_filterBtn setImage:[UIImage imageNamed:@"filter"] forState:UIControlStateNormal];
-        [_filterBtn setImage:[UIImage imageNamed:@"filter"] forState:UIControlStateHighlighted];
-        [_filterBtn setTitleColor:UIColor.grayColor forState:UIControlStateNormal];
+//        [_filterBtn setImage:[UIImage imageNamed:@"filter"] forState:UIControlStateNormal];
+//        [_filterBtn setImage:[UIImage imageNamed:@"filter"] forState:UIControlStateHighlighted];
+        [_filterBtn setTitle:@"筛选" forState:UIControlStateNormal];
+        [_filterBtn setTitleColor:UIColor.systemBlueColor forState:UIControlStateNormal];
+        _filterBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         [_filterBtn addTarget:self action:@selector(filterAciton) forControlEvents:UIControlEventTouchUpInside];
         _filterBtn.imageEdgeInsets = UIEdgeInsetsMake(5, 50, 5, -25);
         [_filterBtn sizeToFit];
