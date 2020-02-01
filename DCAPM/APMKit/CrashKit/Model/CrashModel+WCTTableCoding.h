@@ -17,5 +17,6 @@ WCDB_PROPERTY(reason)
 WCDB_PROPERTY(timeStamp)
 WCDB_PROPERTY(timeDate)
 WCDB_PROPERTY(stack)
+WCDB_PROPERTY(screenShot)
 
 @end

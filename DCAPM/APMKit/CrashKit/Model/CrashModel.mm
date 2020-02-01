@@ -22,6 +22,7 @@ WCDB_SYNTHESIZE(CrashModel, reason)
 WCDB_SYNTHESIZE(CrashModel, timeStamp)
 WCDB_SYNTHESIZE(CrashModel, timeDate)
 WCDB_SYNTHESIZE(CrashModel, stack)
+WCDB_SYNTHESIZE(CrashModel, screenShot)
 
 WCDB_PRIMARY_ASC_AUTO_INCREMENT(CrashModel, crashId)
 

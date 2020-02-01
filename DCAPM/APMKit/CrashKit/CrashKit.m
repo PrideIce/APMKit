@@ -32,6 +32,7 @@ void APM_UncaughtExceptionHandler(NSException *exception) {
     model.timeDate = timeDate;
     model.timeStamp = timeStamp;
     model.stack = expStack;
+    model.screenShot = [CrashKit getScreenShot];
     [model insertToDB];
 }
 
@@ -138,5 +139,27 @@ void APM_SignalExceptionHandler(int signal){
     return [CrashModel getAllRecords];
 }
  
++ (UIImage *)getScreenShot
+{
+    UIView *currentView = [UIApplication sharedApplication].keyWindow.rootViewController.view;
+    // 开启图片上下文
+    UIGraphicsBeginImageContextWithOptions(currentView.bounds.size, NO, 0);
+    // 获取当前上下文
+//    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    // 截图:实际是把layer上面的东西绘制到上下文中
+//    [currentView.layer renderInContext:ctx];
+//    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+//    [statusBar drawViewHierarchyInRect:statusBar.frame afterScreenUpdates:YES];
+    //iOS7+ 推荐使用的方法，代替上述方法
+    [currentView drawViewHierarchyInRect:currentView.frame afterScreenUpdates:YES];
+    // 获取截图
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    // 关闭图片上下文
+    UIGraphicsEndImageContext();
+    
+    UIImageWriteToSavedPhotosAlbum(image, NULL, NULL, NULL);
+    
+    return image;
+}
 
 @end

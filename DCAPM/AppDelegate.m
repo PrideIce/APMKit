@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "APMKit.h"
+#import "CrashKit.h"
 
 @interface AppDelegate ()
 
@@ -21,8 +22,10 @@
     
     [APMKit startAPM];
     
-    NSArray *array = [NSArray arrayWithObject:@"there is only one objective in this arary,call index one, app will crash and throw an exception!"];
-//    NSLog(@"%@", [array objectAtIndex:1]);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSArray *array = [NSArray arrayWithObject:@"there is only one objective in this arary,call index one, app will crash and throw an exception!"];
+//        NSLog(@"%@", [array objectAtIndex:1]);
+    });
 
     return YES;
 }

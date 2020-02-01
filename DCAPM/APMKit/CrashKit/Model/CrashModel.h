@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface CrashModel : NSObject
 
@@ -16,6 +17,7 @@
 @property(nonatomic, copy) NSString *timeStamp;
 @property(nonatomic, copy) NSString *timeDate;
 @property(nonatomic, copy) NSString *stack;
+@property(nonatomic, strong) UIImage *screenShot;
 
 #pragma mark - CRUD
 - (BOOL)insertToDB;
