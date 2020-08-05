@@ -62,7 +62,8 @@
     self.rowHeight = UITableViewAutomaticDimension;
     self.backgroundColor = APMRGB(243, 244, 246);
     
-    [self registerNib:[UINib nibWithNibName:@"NetworkDetailCell" bundle:nil] forCellReuseIdentifier:@"NetworkDetailCellID"];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    [self registerNib:[UINib nibWithNibName:@"NetworkDetailCell" bundle:bundle] forCellReuseIdentifier:@"NetworkDetailCellID"];
 }
 
 #pragma mark — UITableViewDataSource
@@ -88,8 +89,8 @@
     NSArray *rows = [_rowsDict objectForKey:sectionTitle];
     NetworkRecordEntry *entry = [rows objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = entry.leftInfo;
-    cell.detailLabel.text = entry.rightInfo;
+    cell.leftTextView.text = entry.leftInfo;
+    cell.rightLabel.text = entry.rightInfo;
     cell.accessoryType = entry.showEntrance ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
     return cell;
 }

@@ -12,8 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NetworkDetailCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *textLabel;
-@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *leftLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet UITextView *leftTextView;
+@property (weak, nonatomic) IBOutlet UILabel *rightLabel;
 
 @end
 

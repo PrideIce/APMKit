@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CrashKit : NSObject
 
++ (void)startMonitor;
+
 + (NSUncaughtExceptionHandler *)getHandler;
 
 + (NSArray *)getAllCrashRecords;

@@ -36,7 +36,7 @@
     self.navigationItem.rightBarButtonItem = buttonItem;
     
     [self.view addSubview:self.tableView];
-    self.dataArray = [NetworkModel getAllRecords];
+    self.dataArray = [NetworkModel getRecordsWithCount:100];
     [self reloadTableView];
 }
 
@@ -62,7 +62,8 @@
         _tableView.dataSource = self;
         _tableView.estimatedRowHeight = 130;
         _tableView.rowHeight = UITableViewAutomaticDimension;
-        [_tableView registerNib:[UINib nibWithNibName:@"NetworkListCell" bundle:nil] forCellReuseIdentifier:@"NetworkListCell"];
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        [_tableView registerNib:[UINib nibWithNibName:@"NetworkListCell" bundle:bundle] forCellReuseIdentifier:@"NetworkListCell"];
     }
     return _tableView;
 }
@@ -70,7 +71,7 @@
 - (UISegmentedControl *)segControl
 {
     if (_segControl == nil) {
-        _segControl = [[UISegmentedControl alloc] initWithItems:@[@"时间",@"大小"]];
+        _segControl = [[UISegmentedControl alloc] initWithItems:@[@"时间",@"流量",@"耗时"]];
         _segControl.selectedSegmentIndex = 0;
         [_segControl addTarget:self action:@selector(selectSegmentAction:) forControlEvents:UIControlEventValueChanged];
     }
@@ -153,7 +154,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NetworkRecordVC *vc = [[NetworkRecordVC alloc] init];
+    NetworkRecordVC *vc = [NetworkRecordVC instanceFromXib];
     vc.model = [self.dataArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -163,9 +164,11 @@
 - (IBAction)selectSegmentAction:(UISegmentedControl *)sender
 {
     if (self.segControl.selectedSegmentIndex == 0) {
-        self.dataArray = [NetworkModel getAllRecords];
-    } else {
-        self.dataArray = [NetworkModel getAllRecordsBySizeOrder];
+        self.dataArray = [NetworkModel getRecordsWithCount:100];
+    } else if (self.segControl.selectedSegmentIndex == 1) {
+        self.dataArray = [NetworkModel getRecordsBySizeOrderWithCount:100];
+    } else if (self.segControl.selectedSegmentIndex == 2) {
+        self.dataArray = [NetworkModel getRecordsByTimeDurationWithCount:100];
     }
     [self reloadTableView];
 }

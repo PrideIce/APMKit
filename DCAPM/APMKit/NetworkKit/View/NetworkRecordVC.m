@@ -19,6 +19,8 @@
 @property (nonatomic,strong) NSDictionary *requestRowsDict;
 @property (nonatomic,strong) NSArray<NSString*> *responseSetions;
 @property (nonatomic,strong) NSDictionary *responseRowsDict;
+@property (nonatomic,strong) NSArray<NSString*> *timeSections;
+@property (nonatomic,strong) NSDictionary *timeRowsDict;
 
 
 @end
@@ -38,6 +40,7 @@
 
 - (void)initDataInfo
 {
+    //请求
     self.requestSetions = @[@"消息体",@"链接",@"请求头",@"请求行"];
     NSMutableArray *arr1 = [NSMutableArray array];
     NSString *requestLength = [APMUtility getFileSizeOfLength:_model.requestDataLength];
@@ -65,7 +68,7 @@
                              @"链接":arr2,
                              @"请求头":arr3,
                              @"请求行":arr4};
-    
+    //响应
     self.responseSetions = @[@"状态码",@"响应头",@"响应内容"];
     NSMutableArray *response1 = [NSMutableArray array];
     [response1 addObject:[NetworkRecordEntry entryWithLeftInfo:[NSString stringWithFormat:@"%ld",(long)_model.response.statusCode]]];
@@ -86,6 +89,27 @@
     self.responseRowsDict = @{@"状态码":response1,
                               @"响应头":response2,
                               @"响应内容":response3};
+    //概览
+    //时间
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS"];
+    
+    self.timeSections = @[@"开始时间",@"结束时间",@"总共耗时"];
+    NSMutableArray *startTime = [NSMutableArray array];
+    NSDate *sDate = [NSDate dateWithTimeIntervalSince1970:_model.startTime];
+    [startTime addObject:[NetworkRecordEntry entryWithLeftInfo:[formatter stringFromDate:sDate]]];
+    
+    NSMutableArray *endTime = [NSMutableArray array];
+    NSDate *eDate = [NSDate dateWithTimeIntervalSince1970:_model.endTime];
+    [endTime addObject:[NetworkRecordEntry entryWithLeftInfo:[formatter stringFromDate:eDate]]];
+    
+    NSMutableArray *lengthOfTime = [NSMutableArray array];
+    NSTimeInterval timeOffset = _model.endTime - _model.startTime;
+    [lengthOfTime addObject:[NetworkRecordEntry entryWithLeftInfo:[NSString stringWithFormat:@"%.03fs",timeOffset]]];
+    self.timeRowsDict = @{@"开始时间":startTime,
+                          @"结束时间":endTime,
+                          @"总共耗时":lengthOfTime};
+    
 }
 
 - (IBAction)selectSegmentAction:(UISegmentedControl *)sender
@@ -97,9 +121,11 @@
         self.tableView.setions = self.responseSetions;
         self.tableView.rowsDict = self.responseRowsDict;
     } else if (sender.selectedSegmentIndex == 2) {
-        
+        self.tableView.setions = @[];
+        self.tableView.rowsDict = @{};
     } else if (sender.selectedSegmentIndex == 3) {
-        
+        self.tableView.setions = self.timeSections;
+        self.tableView.rowsDict = self.timeRowsDict;
     }
     [self.tableView reloadData];
 }

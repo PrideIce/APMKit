@@ -7,16 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "APMBaseVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface APMMonitorVC : UIViewController
+@interface APMMonitorVC : APMBaseVC
+
+@property (nonatomic,copy) void(^expandBtnAction)(void);
 
 + (instancetype)shared;
 
 + (void)show;
 
 + (void)hide;
+
+- (void)setExpandBtnTitle:(NSString *)title;
 
 @end
 

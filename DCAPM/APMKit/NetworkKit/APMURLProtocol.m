@@ -65,15 +65,14 @@ static NSString *const APMHTTP = @"APMHTTP";//为了避免canInitWithRequest和c
  */
 + (BOOL)canInitWithRequest:(NSURLRequest *)request
 {
-    if (![request.URL.scheme isEqualToString:@"http"] &&
-        ![request.URL.scheme isEqualToString:@"https"]) {
-        return NO;
-    }
     //如果是已经拦截过的  就放行
     if ([NSURLProtocol propertyForKey:APMHTTP inRequest:request]) {
         return NO;
     }
-    return YES;
+    if ([request.URL.scheme isEqualToString:@"http"] || [request.URL.scheme isEqualToString:@"https"]) {
+        return YES;
+    }
+    return NO;
 }
 
 /**
@@ -96,7 +95,7 @@ static NSString *const APMHTTP = @"APMHTTP";//为了避免canInitWithRequest和c
     self.apm_request = self.request;
     self.model = [[NetworkModel alloc] init];
     self.model.request = self.request;
-    self.model.startTime = [[NSDate date] timeIntervalSince1970];
+    //self.model.startTime = [[NSDate date] timeIntervalSince1970];
     self.apm_data = [NSMutableData data];
     
     NSURLRequest *request = [[self class] canonicalRequestForRequest:self.request];
@@ -107,7 +106,7 @@ static NSString *const APMHTTP = @"APMHTTP";//为了避免canInitWithRequest和c
    [self.connection cancel];
     
     self.model.url = self.request.URL.absoluteString;
-    self.model.responseTime = [NSString stringWithFormat:@"%lld", (long long)([[NSDate date] timeIntervalSince1970] * 1000)];
+    //self.model.responseTime = [NSString stringWithFormat:@"%lld", (long long)([[NSDate date] timeIntervalSince1970] * 1000)];
     self.model.data = self.apm_data;
     self.model.response = (NSHTTPURLResponse *)self.apm_response;
     self.model.statusCode = self.model.response.statusCode;
@@ -118,20 +117,19 @@ static NSString *const APMHTTP = @"APMHTTP";//为了避免canInitWithRequest和c
 }
 
 #pragma mark - NSURLConnectionDelegate
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     [self.client URLProtocol:self didFailWithError:error];
 }
 
-- (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection{
+- (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection {
     return YES;
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     [self.client URLProtocol:self didReceiveAuthenticationChallenge:challenge];
 }
 
-- (void)connection:(NSURLConnection *)connection
-didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     [self.client URLProtocol:self didCancelAuthenticationChallenge:challenge];
 }
 
@@ -144,8 +142,7 @@ didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     return request;
 }
 
-- (void)connection:(NSURLConnection *)connection
-didReceiveResponse:(NSURLResponse *)response {
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowed];
     self.apm_response = response;
 }
@@ -156,8 +153,7 @@ didReceiveResponse:(NSURLResponse *)response {
     NSLog(@"receiveData");
 }
 
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
-                  willCacheResponse:(NSCachedURLResponse *)cachedResponse {
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
     return cachedResponse;
 }
 
@@ -167,10 +163,14 @@ didReceiveResponse:(NSURLResponse *)response {
 
 #pragma mark - Cookie
 
-- (NSUInteger)dgm_getHeadersLengthWithCookie {
+- (NSUInteger)dgm_getHeadersLengthWithCookie
+{
     NSUInteger headersLength = 0;
 
-    NSDictionary<NSString *, NSString *> *headerFields = self.apm_request.allHTTPHeaderFields;
+    if (![self.request isKindOfClass:NSURLRequest.class] || ![self.request respondsToSelector:@selector(allHTTPHeaderFields)]) {
+        return 0;
+    }
+    NSDictionary<NSString *, NSString *> *headerFields = self.request.allHTTPHeaderFields;
     NSDictionary<NSString *, NSString *> *cookiesHeader = [self dgm_getCookies];
 
     // 添加 cookie 信息
@@ -207,7 +207,12 @@ didReceiveResponse:(NSURLResponse *)response {
 
 #pragma mark - Body
 
-- (NSUInteger)dgm_getBodyLength {
+- (NSUInteger)dgm_getBodyLength
+{
+    if (![self.request isKindOfClass:NSURLRequest.class] || ![self.request respondsToSelector:@selector(allHTTPHeaderFields)]) {
+        NSLog(@"Network type unsupport: %@", self.request);
+        return 0;
+    }
     NSDictionary<NSString *, NSString *> *headerFields = self.request.allHTTPHeaderFields;
     NSUInteger bodyLength = [self.request.HTTPBody length];
 

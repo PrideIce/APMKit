@@ -8,14 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import "APMURLProtocol.h"
+#import "CrashKit.h"
+#import "APMMonitorVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface APMKit : NSObject
 
+@property (nonatomic,readonly) BOOL isOpen;
+
 + (instancetype)shared;
 
++ (void)initAPM;
+
 + (void)startAPM;
+
++ (void)stopAPM;
 
 @end
 

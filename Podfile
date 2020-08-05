@@ -5,4 +5,5 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'DCAPM' do
    pod 'Masonry'
    pod 'WCDB'
+   pod 'GZIP'
 end

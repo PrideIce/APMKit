@@ -39,7 +39,7 @@
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:model.startTime];
     self.timeLabel.text = [NSString stringWithFormat:@"[%ld] %@", (long)model.response.statusCode,[formatter stringFromDate:date]];
-    self.sizeLabel.text = [NSString stringWithFormat:@"↓ %@  ↑ %@", [APMUtility getFileSizeOfLength:model.data.length], [APMUtility getFileSizeOfLength:model.requestDataLength]];
+        self.sizeLabel.text = [NSString stringWithFormat:@"↓ %@  ↑ %@  %.03fS", [APMUtility getFileSizeOfLength:model.responseDataLength], [APMUtility getFileSizeOfLength:model.requestDataLength], model.totalDuration];
 }
 
 @end

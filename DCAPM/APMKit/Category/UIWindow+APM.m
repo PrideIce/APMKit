@@ -60,11 +60,16 @@
             allDown = NO;
         }
     }
+    
+#if TARGET_IPHONE_SIMULATOR
+    [APMMonitorVC show];
+#else
     if (allDown) {
         [APMMonitorVC show];
     } else {
         [APMMonitorVC hide];
     }
+#endif
 }
 
 - (int)touchesToShow

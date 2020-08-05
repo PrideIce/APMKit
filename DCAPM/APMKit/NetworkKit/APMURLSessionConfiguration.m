@@ -9,6 +9,7 @@
 #import "APMURLSessionConfiguration.h"
 #import <objc/runtime.h>
 #import "APMURLProtocol.h"
+#import "CustomHTTPProtocol.h"
 
 @implementation APMURLSessionConfiguration
 
@@ -57,7 +58,7 @@
 
 - (NSArray *)protocolClasses
 {
-    return @[[APMURLProtocol class]];
+    return @[CustomHTTPProtocol.class];
     //如果还有其他的监控protocol，也可以在这里加进去
 }
 

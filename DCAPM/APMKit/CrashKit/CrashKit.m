@@ -112,7 +112,19 @@ void APM_SignalExceptionHandler(int signal){
 
 @implementation CrashKit
 
-+ (void)load
+//+ (void)load
+//{
+//    [CrashKit setDefaultHandler];
+//    
+//    signal(SIGABRT, APM_SignalExceptionHandler);
+//    signal(SIGILL, APM_SignalExceptionHandler);
+//    signal(SIGSEGV, APM_SignalExceptionHandler);
+//    signal(SIGFPE, APM_SignalExceptionHandler);
+//    signal(SIGBUS, APM_SignalExceptionHandler);
+//    signal(SIGPIPE, APM_SignalExceptionHandler);
+//}
+
++ (void)startMonitor
 {
     [CrashKit setDefaultHandler];
     

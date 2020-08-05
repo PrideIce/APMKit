@@ -13,6 +13,8 @@
 #import "NetworkListVC.h"
 #import "PerformanceKit.h"
 #import "APMMacro.h"
+#import "NetworkModel.h"
+#import "NetworkTrafficVC.h"
 
 @interface APMMonitorVC ()
 
@@ -23,7 +25,11 @@
 @property (nonatomic,strong) UIButton *hardworkBtn;
 @property (nonatomic,strong) UIButton *memoryBtn;
 @property (nonatomic,strong) UIButton *catonBtn;
+@property (nonatomic,strong) UIButton *stopBtn;
 @property (nonatomic,strong) UIButton *exitBtn;
+@property (nonatomic,strong) UIButton *expandBtn;
+
+@property (nonatomic,strong) UILabel *statusLabel;
 
 @end
 
@@ -110,6 +116,29 @@
         make.centerX.equalTo(self.view).offset(offsetX);
     }];
     
+    [self.view addSubview:self.statusLabel];
+    [self.statusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.memoryBtn.mas_bottom).offset(80);
+    }];
+    
+    [self.view addSubview:self.stopBtn];
+    [self.stopBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(btnWidth));
+        make.height.equalTo(@(btnHeigth));
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.statusLabel.mas_bottom).offset(15);
+    }];
+    [self dealStatus];
+    
+    [self.view addSubview:self.expandBtn];
+    [self.expandBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(btnWidth+30));
+        make.height.equalTo(@(btnHeigth));
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.stopBtn.mas_bottom).offset(50);
+    }];
+    
     CGFloat bottomHeight = -50 - APMSafeBottomHeight;
     [self.view addSubview:self.exitBtn];
     [self.exitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -193,13 +222,13 @@
 {
     if (!_trafficBtn) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setTitleColor:UIColor.grayColor forState:UIControlStateNormal];
+        [button setTitleColor:APMFontDefaultColor forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:16];
         [button setTitle:@"流量统计" forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(unsupportAction:) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(trafficAction:) forControlEvents:UIControlEventTouchUpInside];
         button.layer.borderWidth = 1.5;
         button.layer.cornerRadius = 8;
-        button.layer.borderColor = UIColor.grayColor.CGColor;
+        button.layer.borderColor = APMFontDefaultColor.CGColor;
         _trafficBtn = button;
     }
     return _trafficBtn;
@@ -257,16 +286,58 @@
 {
     if (!_exitBtn) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setTitleColor:UIColor.systemPinkColor forState:UIControlStateNormal];
+        [button setTitleColor:APMFontDefaultColor forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:16];
-        [button setTitle:@"退 出" forState:UIControlStateNormal];
+        [button setTitle:@"收 起" forState:UIControlStateNormal];
         [button addTarget:self action:@selector(exitAction:) forControlEvents:UIControlEventTouchUpInside];
         button.layer.borderWidth = 1.5;
         button.layer.cornerRadius = 5;
-        button.layer.borderColor = UIColor.systemPinkColor.CGColor;
+        button.layer.borderColor = APMFontDefaultColor.CGColor;
         _exitBtn = button;
     }
     return _exitBtn;
+}
+
+- (UIButton *)stopBtn
+{
+    if (!_stopBtn) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitleColor:APMFontDefaultColor forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:16];
+        [button addTarget:self action:@selector(stopAction:) forControlEvents:UIControlEventTouchUpInside];
+        button.layer.borderWidth = 1.5;
+        button.layer.cornerRadius = 5;
+        button.layer.borderColor = APMFontDefaultColor.CGColor;
+        _stopBtn = button;
+    }
+    return _stopBtn;
+}
+
+- (UIButton *)expandBtn
+{
+    if (!_expandBtn) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitleColor:APMFontDefaultColor forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:16];
+        [button addTarget:self action:@selector(expandBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        button.layer.borderWidth = 1.5;
+        button.layer.cornerRadius = 5;
+        button.layer.borderColor = APMFontDefaultColor.CGColor;
+        button.hidden = YES;
+        _expandBtn = button;
+    }
+    return _expandBtn;
+}
+
+- (UILabel *)statusLabel
+{
+    if (!_statusLabel) {
+        UILabel *label = [[UILabel alloc] init];
+        label.textColor = UIColor.grayColor;
+        label.font = [UIFont boldSystemFontOfSize:17];
+        _statusLabel = label;
+    }
+    return _statusLabel;
 }
 
 #pragma mark - Action
@@ -283,6 +354,12 @@
     [APMMonitorVC.shared.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)trafficAction:(id)sender
+{
+    NetworkTrafficVC *vc = [NetworkTrafficVC new];
+    [APMMonitorVC.shared.navigationController pushViewController:vc animated:YES];
+}
+
 - (void)performainceAciton:(id)sender
 {
     [PerformanceKit toggleWith:APMTypeAll];
@@ -291,6 +368,35 @@
 - (void)exitAction:(id)sender
 {
     [APMMonitorVC hide];
+}
+
+- (void)stopAction:(id)sender
+{
+    if (APMKit.shared.isOpen) {
+        [APMKit stopAPM];
+    } else {
+        [APMKit startAPM];
+    }
+    [self dealStatus];
+}
+
+- (void)dealStatus
+{
+    if (APMKit.shared.isOpen) {
+        [_stopBtn setTitle:@"停止监控" forState:UIControlStateNormal];
+        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"监控状态：开启中"];
+        NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+        attributes[NSForegroundColorAttributeName] = [UIColor systemGreenColor];
+        [string setAttributes:attributes range:NSMakeRange(5, 3)];
+        _statusLabel.attributedText = string;
+    } else {
+        [_stopBtn setTitle:@"开启监控" forState:UIControlStateNormal];
+        NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"监控状态：已停止"];
+        NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+        attributes[NSForegroundColorAttributeName] = [UIColor systemRedColor];
+        [string setAttributes:attributes range:NSMakeRange(5, 3)];
+        _statusLabel.attributedText = string;
+    }
 }
 
 - (void)unsupportAction:(id)sender
@@ -302,6 +408,19 @@
     }];
     [alertVC addAction:sureAction2];
     [self presentViewController:alertVC animated:YES completion:nil];
+}
+
+- (void)setExpandBtnTitle:(NSString *)title
+{
+    self.expandBtn.hidden = NO;
+    [self.expandBtn setTitle:title forState:UIControlStateNormal];
+}
+
+- (void)expandBtnClick:(id)sender
+{
+    if (self.expandBtnAction) {
+        self.expandBtnAction();
+    }
 }
 
 @end
