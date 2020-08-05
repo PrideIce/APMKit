@@ -12,7 +12,7 @@
 		<key>Masonry.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Pods-DCAPM.xcscheme</key>
 		<dict>
@@ -22,7 +22,7 @@
 		<key>Pods-DCAPM.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<key>SQLiteRepairKit.xcscheme</key>
 		<dict>
@@ -32,7 +32,7 @@
 		<key>SQLiteRepairKit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>0</integer>
 		</dict>
 		<key>WCDB.xcscheme</key>
 		<dict>
@@ -42,7 +42,7 @@
 		<key>WCDB.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>5</integer>
 		</dict>
 		<key>WCDBOptimizedSQLCipher.xcscheme</key>
 		<dict>
@@ -52,7 +52,7 @@
 		<key>WCDBOptimizedSQLCipher.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 </dict>
