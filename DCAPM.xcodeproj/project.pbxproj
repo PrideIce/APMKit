@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4BEB19556C542E1F0BB104E0 /* libPods-DCAPM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACDCBC08216F65A9B36DE073 /* libPods-DCAPM.a */; };
+		F802A66924DBFDD800521D1A /* Preview-9.png in Resources */ = {isa = PBXBuildFile; fileRef = F802A66724DBFDD800521D1A /* Preview-9.png */; };
+		F802A66A24DBFDD800521D1A /* Preview-8.png in Resources */ = {isa = PBXBuildFile; fileRef = F802A66824DBFDD800521D1A /* Preview-8.png */; };
 		F8698D2C24DA828900A7D9D7 /* APMMonitorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8698CD824DA828800A7D9D7 /* APMMonitorVC.m */; };
 		F8698D2D24DA828900A7D9D7 /* CrashModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = F8698CDC24DA828800A7D9D7 /* CrashModel.mm */; };
 		F8698D2E24DA828900A7D9D7 /* CrashDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8698CE024DA828800A7D9D7 /* CrashDetailVC.m */; };
@@ -63,6 +65,8 @@
 		949033A8D1B92FA22611E85D /* Pods-DCAPM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCAPM.release.xcconfig"; path = "Target Support Files/Pods-DCAPM/Pods-DCAPM.release.xcconfig"; sourceTree = "<group>"; };
 		ACDCBC08216F65A9B36DE073 /* libPods-DCAPM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DCAPM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B79B792080D6356315CFED69 /* Pods-DCAPM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCAPM.debug.xcconfig"; path = "Target Support Files/Pods-DCAPM/Pods-DCAPM.debug.xcconfig"; sourceTree = "<group>"; };
+		F802A66724DBFDD800521D1A /* Preview-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Preview-9.png"; sourceTree = "<group>"; };
+		F802A66824DBFDD800521D1A /* Preview-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Preview-8.png"; sourceTree = "<group>"; };
 		F8698CD524DA7F3600A7D9D7 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		F8698CD724DA828800A7D9D7 /* APMMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APMMacro.h; sourceTree = "<group>"; };
 		F8698CD824DA828800A7D9D7 /* APMMonitorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APMMonitorVC.m; sourceTree = "<group>"; };
@@ -329,20 +333,20 @@
 		F8698D1524DA828900A7D9D7 /* PerformanceKit */ = {
 			isa = PBXGroup;
 			children = (
-				F8698D1624DA828900A7D9D7 /* APMCpuMonitor.h */,
-				F8698D1724DA828900A7D9D7 /* APMMemoryMonitor.m */,
-				F8698D1824DA828900A7D9D7 /* APMTempVC.m */,
-				F8698D1924DA828900A7D9D7 /* APMMonitor.h */,
-				F8698D1A24DA828900A7D9D7 /* APMFPSMonitor.h */,
-				F8698D1B24DA828900A7D9D7 /* PerformanceKit.m */,
+				F8698D2224DA828900A7D9D7 /* APMConsoleLabel.h */,
 				F8698D1C24DA828900A7D9D7 /* APMConsoleLabel.m */,
-				F8698D1D24DA828900A7D9D7 /* APMMemoryMonitor.h */,
+				F8698D1624DA828900A7D9D7 /* APMCpuMonitor.h */,
 				F8698D1E24DA828900A7D9D7 /* APMCpuMonitor.m */,
+				F8698D1A24DA828900A7D9D7 /* APMFPSMonitor.h */,
 				F8698D1F24DA828900A7D9D7 /* APMFPSMonitor.m */,
+				F8698D1D24DA828900A7D9D7 /* APMMemoryMonitor.h */,
+				F8698D1724DA828900A7D9D7 /* APMMemoryMonitor.m */,
+				F8698D1924DA828900A7D9D7 /* APMMonitor.h */,
 				F8698D2024DA828900A7D9D7 /* APMMonitor.m */,
 				F8698D2124DA828900A7D9D7 /* APMTempVC.h */,
-				F8698D2224DA828900A7D9D7 /* APMConsoleLabel.h */,
+				F8698D1824DA828900A7D9D7 /* APMTempVC.m */,
 				F8698D2324DA828900A7D9D7 /* PerformanceKit.h */,
+				F8698D1B24DA828900A7D9D7 /* PerformanceKit.m */,
 			);
 			path = PerformanceKit;
 			sourceTree = "<group>";
@@ -388,6 +392,8 @@
 				F8698D5424DA86A800A7D9D7 /* Preview-5.png */,
 				F8698D5724DA86A800A7D9D7 /* Preview-6.png */,
 				F8698D5324DA86A800A7D9D7 /* Preview-7.png */,
+				F802A66824DBFDD800521D1A /* Preview-8.png */,
+				F802A66724DBFDD800521D1A /* Preview-9.png */,
 			);
 			path = Preview;
 			sourceTree = "<group>";
@@ -484,6 +490,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F802A66924DBFDD800521D1A /* Preview-9.png in Resources */,
+				F802A66A24DBFDD800521D1A /* Preview-8.png in Resources */,
 				F8698D5D24DA86A800A7D9D7 /* Preview-3.png in Resources */,
 				F8698D5E24DA86A800A7D9D7 /* Preview-6.png in Resources */,
 				F8698D5924DA86A800A7D9D7 /* Preview-2.png in Resources */,

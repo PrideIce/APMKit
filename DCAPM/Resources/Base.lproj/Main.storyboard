@@ -39,14 +39,23 @@
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1R-V3-zQz">
+                                <rect key="frame" x="184" y="150" width="46" height="30"/>
+                                <state key="normal" title="闪退啦"/>
+                                <connections>
+                                    <action selector="crashAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wCt-WM-JO1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="RAp-l0-SA9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4mr-Nb-sXZ"/>
                             <constraint firstItem="xCF-3y-Vc7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5xn-rB-i7k"/>
                             <constraint firstItem="FKI-sx-2W4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6mq-SA-eBC"/>
-                            <constraint firstItem="RAp-l0-SA9" firstAttribute="top" secondItem="oJf-tc-nm3" secondAttribute="bottom" constant="120" id="Bfb-eU-iJM"/>
                             <constraint firstAttribute="trailing" secondItem="FKI-sx-2W4" secondAttribute="trailing" constant="30" id="YzE-nY-lvz"/>
+                            <constraint firstItem="p1R-V3-zQz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cx3-zP-WKN"/>
+                            <constraint firstItem="p1R-V3-zQz" firstAttribute="top" secondItem="oJf-tc-nm3" secondAttribute="bottom" constant="62" id="kde-Ha-Qd6"/>
+                            <constraint firstItem="RAp-l0-SA9" firstAttribute="top" secondItem="p1R-V3-zQz" secondAttribute="bottom" constant="28" id="odj-5V-Mdo"/>
                             <constraint firstItem="xCF-3y-Vc7" firstAttribute="top" secondItem="RAp-l0-SA9" secondAttribute="bottom" constant="30" id="sgq-w7-4Yk"/>
                             <constraint firstItem="FKI-sx-2W4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="tLo-uj-Rct"/>
                             <constraint firstItem="FKI-sx-2W4" firstAttribute="top" secondItem="xCF-3y-Vc7" secondAttribute="bottom" constant="100" id="uWJ-ET-mfP"/>

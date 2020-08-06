@@ -19,31 +19,34 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"APM Demo";
     self.tipLabel.text = @"Tip: 任何界面三指下滑可调出APM监控面板，\n三指上滑关闭画面。";
 }
 
+#pragma mark - Action
+
 - (IBAction)monitorAction:(id)sender
 {
     [APMMonitorVC show];
 }
 
-
 - (IBAction)crashAction:(id)sender
 {
-    CrashListVC *vc = [[CrashListVC alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    NSArray *emptyArray = @[];
+    NSLog(@"第一个元素是%@", emptyArray[0]);
 }
-
 
 - (IBAction)requestAction:(id)sender
 {
     [self getRequest];
     //    [self postRequest];
 }
+
+#pragma mark - Network
 
 - (void)getRequest
 {
