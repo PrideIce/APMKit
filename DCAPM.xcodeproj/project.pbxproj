@@ -188,6 +188,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F802A66B24DD0A5F00521D1A /* Connection-Old */ = {
+			isa = PBXGroup;
+			children = (
+				F8698D1224DA828900A7D9D7 /* APMURLProtocol.h */,
+				F8698CEF24DA828800A7D9D7 /* APMURLProtocol.m */,
+			);
+			path = "Connection-Old";
+			sourceTree = "<group>";
+		};
 		F8698CD624DA828800A7D9D7 /* APMKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,30 +263,29 @@
 		F8698CEE24DA828800A7D9D7 /* NetworkKit */ = {
 			isa = PBXGroup;
 			children = (
-				F8698CEF24DA828800A7D9D7 /* APMURLProtocol.m */,
-				F8698CF024DA828800A7D9D7 /* APMURLSessionConfiguration.m */,
-				F8698CF124DA828800A7D9D7 /* Core Code */,
-				F8698CFA24DA828800A7D9D7 /* Model */,
-				F8698CFE24DA828800A7D9D7 /* View */,
-				F8698D1224DA828900A7D9D7 /* APMURLProtocol.h */,
 				F8698D1324DA828900A7D9D7 /* APMURLSessionConfiguration.h */,
+				F8698CF024DA828800A7D9D7 /* APMURLSessionConfiguration.m */,
+				F802A66B24DD0A5F00521D1A /* Connection-Old */,
+				F8698CFA24DA828800A7D9D7 /* Model */,
+				F8698CF124DA828800A7D9D7 /* Session */,
+				F8698CFE24DA828800A7D9D7 /* View */,
 			);
 			path = NetworkKit;
 			sourceTree = "<group>";
 		};
-		F8698CF124DA828800A7D9D7 /* Core Code */ = {
+		F8698CF124DA828800A7D9D7 /* Session */ = {
 			isa = PBXGroup;
 			children = (
 				F8698CF224DA828800A7D9D7 /* CacheStoragePolicy.h */,
-				F8698CF324DA828800A7D9D7 /* CustomHTTPProtocol.m */,
-				F8698CF424DA828800A7D9D7 /* CanonicalRequest.h */,
-				F8698CF524DA828800A7D9D7 /* QNSURLSessionDemux.m */,
 				F8698CF624DA828800A7D9D7 /* CacheStoragePolicy.m */,
+				F8698CF424DA828800A7D9D7 /* CanonicalRequest.h */,
 				F8698CF724DA828800A7D9D7 /* CanonicalRequest.m */,
 				F8698CF824DA828800A7D9D7 /* CustomHTTPProtocol.h */,
+				F8698CF324DA828800A7D9D7 /* CustomHTTPProtocol.m */,
 				F8698CF924DA828800A7D9D7 /* QNSURLSessionDemux.h */,
+				F8698CF524DA828800A7D9D7 /* QNSURLSessionDemux.m */,
 			);
-			path = "Core Code";
+			path = Session;
 			sourceTree = "<group>";
 		};
 		F8698CFA24DA828800A7D9D7 /* Model */ = {
